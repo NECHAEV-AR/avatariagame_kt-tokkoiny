@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -35,10 +36,9 @@
     <p>Ищи дату выхода клипа и проверяй списки победителей.</p>
   </div>
 
-  <div class="archive-wrap">
+  <div class="archive-wrap" id="archiveWrap">
 
-    <!-- Апрель -->
-    <details class="archive-month">
+    <details class="archive-month" data-month="3">
       <summary>
         Апрель 2026
         <span class="summary-hint">
@@ -46,13 +46,10 @@
           <span class="close-label">Закрыть архив</span>
         </span>
       </summary>
-      <div class="clip-list">
-        <!-- Здесь добавляются клипы за апрель -->
-      </div>
+      <div class="clip-list"></div>
     </details>
 
-    <!-- Май -->
-    <details class="archive-month">
+    <details class="archive-month" data-month="4">
       <summary>
         Май 2026
         <span class="summary-hint">
@@ -60,13 +57,10 @@
           <span class="close-label">Закрыть архив</span>
         </span>
       </summary>
-      <div class="clip-list">
-        <!-- Здесь добавляются клипы за май -->
-      </div>
+      <div class="clip-list"></div>
     </details>
 
-    <!-- Июнь -->
-    <details class="archive-month">
+    <details class="archive-month" data-month="5">
       <summary>
         Июнь 2026
         <span class="summary-hint">
@@ -74,13 +68,10 @@
           <span class="close-label">Закрыть архив</span>
         </span>
       </summary>
-      <div class="clip-list">
-        <!-- Здесь добавляются клипы за июнь -->
-      </div>
+      <div class="clip-list"></div>
     </details>
 
-    <!-- Июль -->
-    <details class="archive-month">
+    <details class="archive-month" data-month="6">
       <summary>
         Июль 2026
         <span class="summary-hint">
@@ -88,13 +79,10 @@
           <span class="close-label">Закрыть архив</span>
         </span>
       </summary>
-      <div class="clip-list">
-        <!-- Здесь добавляются клипы за июль -->
-      </div>
+      <div class="clip-list"></div>
     </details>
 
-    <!-- Август -->
-    <details class="archive-month">
+    <details class="archive-month" data-month="7">
       <summary>
         Август 2026
         <span class="summary-hint">
@@ -102,13 +90,10 @@
           <span class="close-label">Закрыть архив</span>
         </span>
       </summary>
-      <div class="clip-list">
-        <!-- Здесь добавляются клипы за август -->
-      </div>
+      <div class="clip-list"></div>
     </details>
 
-    <!-- Сентябрь -->
-    <details class="archive-month">
+    <details class="archive-month" data-month="8">
       <summary>
         Сентябрь 2026
         <span class="summary-hint">
@@ -116,13 +101,10 @@
           <span class="close-label">Закрыть архив</span>
         </span>
       </summary>
-      <div class="clip-list">
-        <!-- Здесь добавляются клипы за сентябрь -->
-      </div>
+      <div class="clip-list"></div>
     </details>
 
-    <!-- Октябрь -->
-    <details class="archive-month">
+    <details class="archive-month" data-month="9">
       <summary>
         Октябрь 2026
         <span class="summary-hint">
@@ -130,13 +112,10 @@
           <span class="close-label">Закрыть архив</span>
         </span>
       </summary>
-      <div class="clip-list">
-        <!-- Здесь добавляются клипы за октябрь -->
-      </div>
+      <div class="clip-list"></div>
     </details>
 
-    <!-- Ноябрь -->
-    <details class="archive-month" open>
+    <details class="archive-month" data-month="10" open>
       <summary>
         Ноябрь 2026
         <span class="summary-hint">
@@ -144,28 +123,7 @@
           <span class="close-label">Закрыть архив</span>
         </span>
       </summary>
-
-      <div class="clip-list">
-
-        <details class="clip-entry">
-          <summary>Клип от <time>__.__.2026</time></summary>
-
-          <div class="winner-columns">
-
-            <details>
-              <summary>❤️ Победители среди поставивших лайк</summary>
-              <p class="muted">Список победителей будет добавлен.</p>
-            </details>
-
-            <details>
-              <summary>💬 Победители среди оставивших комментарий</summary>
-              <p class="muted">Список победителей будет добавлен.</p>
-            </details>
-
-          </div>
-        </details>
-
-      </div>
+      <div class="clip-list"></div>
     </details>
 
   </div>
@@ -177,7 +135,6 @@
 
   <div class="footer-socials">
 
-    <!-- TikTok -->
     <a href="https://www.tiktok.com/@avataria.game"
        target="_blank"
        rel="noopener noreferrer"
@@ -188,7 +145,6 @@
       </svg>
     </a>
 
-    <!-- ВКонтакте -->
     <a href="https://vk.ru/clips/avataryaclub"
        target="_blank"
        rel="noopener noreferrer"
@@ -199,7 +155,6 @@
       </svg>
     </a>
 
-    <!-- TGC -->
     <a href="https://tortuga.games/tgc?ysclid=mwnvs6chn5732222744"
        target="_blank"
        rel="noopener noreferrer"
@@ -215,6 +170,303 @@
   <span>Аватарский KlipTok</span>
 
 </footer>
+
+<script>
+const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRdR5W64XF83bj3Aic7qbLRAdrNKaP1gvLb3LH-d4-aW0HXNgu2AsDQagOKABYvCrjJwbW7krVjMftj/pub?output=csv";
+
+const MONTH_NAMES = [
+  "Январь", "Февраль", "Март", "Апрель",
+  "Май", "Июнь", "Июль", "Август",
+  "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
+];
+
+// Разбираем CSV с учётом кавычек и запятых внутри ячеек.
+function parseCSV(text) {
+  const rows = [];
+  let row = [];
+  let cell = "";
+  let quoted = false;
+
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    const next = text[i + 1];
+
+    if (char === '"' && quoted && next === '"') {
+      cell += '"';
+      i++;
+    } else if (char === '"') {
+      quoted = !quoted;
+    } else if (char === "," && !quoted) {
+      row.push(cell.trim());
+      cell = "";
+    } else if ((char === "\n" || char === "\r") && !quoted) {
+      if (char === "\r" && next === "\n") i++;
+      row.push(cell.trim());
+
+      if (row.some(value => value !== "")) {
+        rows.push(row);
+      }
+
+      row = [];
+      cell = "";
+    } else {
+      cell += char;
+    }
+  }
+
+  row.push(cell.trim());
+
+  if (row.some(value => value !== "")) {
+    rows.push(row);
+  }
+
+  return rows;
+}
+
+function normalizeHeader(value) {
+  return String(value || "")
+    .replace(/^\uFEFF/, "")
+    .trim()
+    .toLowerCase();
+}
+
+function parseDate(value) {
+  const text = String(value || "").trim();
+
+  // Формат ДД.ММ.ГГГГ
+  let match = text.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);
+
+  if (match) {
+    return {
+      day: Number(match[1]),
+      month: Number(match[2]) - 1,
+      year: Number(match[3])
+    };
+  }
+
+  // Формат ГГГГ-ММ-ДД
+  match = text.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+
+  if (match) {
+    return {
+      day: Number(match[3]),
+      month: Number(match[2]) - 1,
+      year: Number(match[1])
+    };
+  }
+
+  return null;
+}
+
+function formatDate(date) {
+  return String(date.day).padStart(2, "0") + "." +
+    String(date.month + 1).padStart(2, "0") + "." +
+    date.year;
+}
+
+function normalizeCategory(value) {
+  const category = String(value || "").trim().toLowerCase();
+
+  if (category === "лайк" || category === "лайки") {
+    return "like";
+  }
+
+  if (
+    category === "комментарий" ||
+    category === "комментарии" ||
+    category === "коммент"
+  ) {
+    return "comment";
+  }
+
+  return null;
+}
+
+function createElement(tag, className, text) {
+  const element = document.createElement(tag);
+
+  if (className) {
+    element.className = className;
+  }
+
+  if (text !== undefined) {
+    element.textContent = text;
+  }
+
+  return element;
+}
+
+function createWinnerCategory(title, winners, emptyText) {
+  const details = createElement("details");
+  const summary = createElement("summary", "", title);
+  const content = createElement("div");
+
+  details.appendChild(summary);
+
+  if (winners.length) {
+    const list = createElement("ul", "winner-list");
+
+    winners.forEach(winner => {
+      list.appendChild(createElement("li", "", winner));
+    });
+
+    content.appendChild(list);
+  } else {
+    content.appendChild(createElement("p", "muted", emptyText));
+  }
+
+  details.appendChild(content);
+
+  return details;
+}
+
+function renderArchive(records) {
+  const months = document.querySelectorAll(".archive-month");
+
+  months.forEach(monthElement => {
+    const monthNumber = Number(monthElement.dataset.month);
+    const clipList = monthElement.querySelector(".clip-list");
+
+    clipList.replaceChildren();
+
+    const monthRecords = records.filter(record =>
+      record.date.year === 2026 &&
+      record.date.month === monthNumber
+    );
+
+    const clips = new Map();
+
+    monthRecords.forEach(record => {
+      const dateKey = formatDate(record.date);
+
+      if (!clips.has(dateKey)) {
+        clips.set(dateKey, {
+          date: record.date,
+          like: [],
+          comment: []
+        });
+      }
+
+      if (record.category === "like") {
+        clips.get(dateKey).like.push(record.winner);
+      }
+
+      if (record.category === "comment") {
+        clips.get(dateKey).comment.push(record.winner);
+      }
+    });
+
+    if (clips.size === 0) {
+      clipList.appendChild(
+        createElement("p", "muted", "Пока нет опубликованных результатов.")
+      );
+      return;
+    }
+
+    const sortedClips = Array.from(clips.values()).sort((a, b) => {
+      return b.date.day - a.date.day;
+    });
+
+    sortedClips.forEach(clip => {
+      const entry = createElement("details", "clip-entry");
+      const summary = createElement(
+        "summary",
+        "",
+        "Клип от " + formatDate(clip.date)
+      );
+
+      const columns = createElement("div", "winner-columns");
+
+      columns.appendChild(
+        createWinnerCategory(
+          "❤️ Победители среди поставивших лайк",
+          clip.like,
+          "Список победителей пока пуст."
+        )
+      );
+
+      columns.appendChild(
+        createWinnerCategory(
+          "💬 Победители среди оставивших комментарий",
+          clip.comment,
+          "Список победителей пока пуст."
+        )
+      );
+
+      entry.appendChild(summary);
+      entry.appendChild(columns);
+      clipList.appendChild(entry);
+    });
+  });
+}
+
+async function loadWinners() {
+  const archive = document.getElementById("archiveWrap");
+
+  try {
+    const response = await fetch(SHEET_URL, {
+      cache: "no-store"
+    });
+
+    if (!response.ok) {
+      throw new Error("Не удалось загрузить таблицу.");
+    }
+
+    const csvText = await response.text();
+    const rows = parseCSV(csvText);
+
+    if (rows.length < 2) {
+      renderArchive([]);
+      return;
+    }
+
+    const headers = rows[0].map(normalizeHeader);
+
+    const dateIndex = headers.indexOf("дата клипа");
+    const categoryIndex = headers.indexOf("категория");
+    const winnerIndex = headers.indexOf("победитель");
+
+    if (dateIndex === -1 || categoryIndex === -1 || winnerIndex === -1) {
+      throw new Error("Проверь названия столбцов в Google Таблице.");
+    }
+
+    const records = [];
+
+    rows.slice(1).forEach(row => {
+      const date = parseDate(row[dateIndex]);
+      const category = normalizeCategory(row[categoryIndex]);
+      const winner = String(row[winnerIndex] || "").trim();
+
+      if (!date || !category || !winner) return;
+      if (date.year !== 2026) return;
+      if (date.month < 3 || date.month > 10) return;
+
+      records.push({
+        date,
+        category,
+        winner
+      });
+    });
+
+    renderArchive(records);
+
+  } catch (error) {
+    console.error("Ошибка загрузки архива победителей:", error);
+
+    archive.querySelectorAll(".clip-list").forEach(list => {
+      list.replaceChildren(
+        createElement(
+          "p",
+          "muted",
+          "Не удалось загрузить списки победителей. Попробуй обновить страницу позже."
+        )
+      );
+    });
+  }
+}
+
+loadWinners();
+</script>
 
 </body>
 </html>
