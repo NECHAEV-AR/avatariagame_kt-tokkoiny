@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#170b2d">
+  <meta name="description" content="ТокКоины — накопительная система проекта Аватария KlipTok.">
+  <title>Магазинчик | ТокКоины</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="ТокКоины — главная">
+    <img src="images/tokcoin.png" alt="" class="brand-coin"><span>ТОККОИНЫ</span>
+  </a>
+  <nav class="main-nav" aria-label="Главное меню"><a href="index.html">Главная</a>
+<a href="earn.html">Способы получения ТокКоинов</a>
+<a href="shop.html" aria-current="page">Магазинчик</a>
+<a href="winners.html">Счастливчики</a>
+<a href="promo.html">Промокоды</a>
+<a href="faq.html">FAQ</a></nav>
+</header>
+<main>
+<section class="section section-alt" id="shop">
+<div class="section-heading">
+<span class="eyebrow">ОБМЕНИВАЙ НАКОПЛЕННОЕ</span>
+<h2>Магазинчик</h2>
+<p>Выбирай призы и копи ТокКоины на то, что нравится.</p>
+</div>
+<div class="catalog-tools">
+<label class="search-wrap"><span>⌕</span><input aria-label="Поиск по названию товара" id="productSearch" placeholder="Поиск по названию товара…" type="search"/></label>
+<label class="sort-wrap"><span>Сортировка</span>
+<select aria-label="Сортировка товаров" id="productSort">
+<option value="default">По умолчанию</option>
+<option value="asc">Сначала дешевле</option>
+<option value="desc">Сначала дороже</option>
+<option value="name">По алфавиту</option>
+</select>
+</label>
+</div>
+<div class="product-grid" id="productGrid"></div>
+<p class="empty-state" hidden="" id="emptyProducts">Ничего не найдено. Попробуй изменить запрос.</p>
+</section>
+</main>
+<footer class="footer">
+  <img src="images/tokcoin.png" alt="" class="footer-coin">
+  <p>ТокКоины | накопительная система</p><span>Аватария KlipTok</span>
+</footer>
+<script src="script.js"></script>
+</body></html>
