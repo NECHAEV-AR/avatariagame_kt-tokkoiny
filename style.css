@@ -5,3 +5,43 @@
 /* Multi-page navigation */
 .main-nav a:hover{color:#ff8de8;text-shadow:0 0 12px rgba(255,79,216,.65)}
 .main-nav a[aria-current="page"]{color:#ff9be9;text-shadow:0 0 12px rgba(255,79,216,.55)}
+/* Иконки социальных сетей в подвале */
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.social-link {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  color: #ffffff;
+  background: #241437;
+  border: 1px solid rgba(220, 100, 255, 0.35);
+  transition: 0.25s ease;
+  text-decoration: none;
+}
+
+.social-link svg {
+  width: 23px;
+  height: 23px;
+}
+
+.social-letter {
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.social-link:hover {
+  color: #ffffff;
+  background: linear-gradient(135deg, #922bff, #ed36c8);
+  box-shadow: 0 0 18px rgba(213, 54, 255, 0.55);
+  transform: translateY(-4px);
+}
