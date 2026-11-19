@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#170b2d">
+  <meta name="description" content="ТокКоины — накопительная система проекта Аватария KlipTok.">
+  <title>ТокКоины | накопительная система</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="ТокКоины — главная">
+      <img src="images/tokcoin.png" alt="" class="brand-coin">
+      <span>ТОККОИНЫ</span>
+    </a>
+    <nav class="main-nav" aria-label="Главное меню">
+      <a href="#home">Главная</a>
+      <a href="#earn">Способы получения ТокКоинов</a>
+      <a href="#shop">Магазинчик</a>
+      <a href="#winners">Счастливчики</a>
+      <a href="#promo">Промокоды</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <span class="eyebrow">АВАТАРИЯ KLIPTOK</span>
+        <h1>ТокКоины <span>|</span> накопительная система</h1>
+        <p>ТокКоины — валюта накопительной системы, которую ты можешь обменивать на уникальные призы от нашего проекта</p>
+        <a class="primary-btn" href="#earn">Узнать больше <span>↓</span></a>
+      </div>
+    </section>
+
+    <section class="section" id="earn">
+      <div class="section-heading">
+        <span class="eyebrow">ЗАРАБАТЫВАЙ И КОПИ</span>
+        <h2>Способы получения ТокКоинов</h2>
+        <p>Выбирай активности, участвуй и пополняй свой баланс.</p>
+      </div>
+      <div class="earn-grid">
+        <article class="glass-card earn-card">
+          <div class="card-symbol">▶</div><h3>Просмотр клипов</h3>
+          <p>Под каждым видео мы будем оставлять специальный промокод, введя который ты сможешь получить случайное количество ТокКоинов.</p>
+          <p class="small-note">Промокоды размещаются под видео в VK Клипах и TikTok. Количество ТокКоинов отличается для каждого клипа.</p>
+          <a class="text-link" href="#promo">Как активировать промокод? <span>→</span></a>
+        </article>
+        <article class="glass-card earn-card">
+          <div class="card-symbol">✎</div><h3>Ваши комментарии</h3>
+          <p>Оставив комментарий под клипом в официальной группе игры вы можете получить 10 ТокКоинов. Награду получают 15 случайно выбранных участников среди оставивших комментарий.</p>
+          <p class="small-note">Комментарий может быть текстом, стикером или даже «ахахаха» — главное, соблюдать правила социальной сети и официальной группы.</p>
+          <a class="text-link" href="#winners">Список счастливчиков <span>→</span></a>
+        </article>
+        <article class="glass-card earn-card">
+          <div class="card-symbol">♡</div><h3>Ваши лайки</h3>
+          <p>Поставив лайк на клип в официальной группе игры вы можете получить 5 ТокКоинов. Награду получают 15 случайно выбранных участников среди поставивших лайк.</p>
+          <a class="text-link" href="https://vk.com/topic-197208593_56246088" target="_blank" rel="noopener">Список счастливчиков <span>↗</span></a>
+        </article>
+        <article class="glass-card earn-card">
+          <div class="card-symbol">♟</div><h3>Победы в играх беседы</h3>
+          <p>Участвуй в играх и конкурсах официальной беседы, занимай призовые места и получай от 10 до 50 ТокКоинов в награду. Размер вознаграждения зависит от сложности активности.</p>
+        </article>
+        <article class="glass-card earn-card">
+          <div class="card-symbol">★</div><h3>Победы в конкурсах группы</h3>
+          <p>Участвуй в конкурсах официальной группы игры и получай ТокКоины за победу! Размер награды зависит от условий конкурса.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="shop">
+      <div class="section-heading">
+        <span class="eyebrow">ОБМЕНИВАЙ НАКОПЛЕННОЕ</span>
+        <h2>Магазинчик</h2>
+        <p>Выбирай призы и копи ТокКоины на то, что нравится.</p>
+      </div>
+      <div class="catalog-tools">
+        <label class="search-wrap"><span>⌕</span><input id="productSearch" type="search" placeholder="Поиск по названию товара…" aria-label="Поиск по названию товара"></label>
+        <label class="sort-wrap"><span>Сортировка</span>
+          <select id="productSort" aria-label="Сортировка товаров">
+            <option value="default">По умолчанию</option>
+            <option value="asc">Сначала дешевле</option>
+            <option value="desc">Сначала дороже</option>
+            <option value="name">По алфавиту</option>
+          </select>
+        </label>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+      <p class="empty-state" id="emptyProducts" hidden>Ничего не найдено. Попробуй изменить запрос.</p>
+    </section>
+
+    <section class="section" id="winners">
+      <div class="section-heading">
+        <span class="eyebrow">ТВОЯ УДАЧА РЯДОМ</span>
+        <h2>Счастливчики</h2>
+        <p>Ищи дату выхода клипа и проверяй списки победителей.</p>
+      </div>
+      <div class="archive-wrap">
+        <details class="archive-month" open>
+          <summary>Ноябрь 2026 <span class="summary-hint">Открыть архив</span></summary>
+          <div class="clip-list">
+            <details class="clip-entry"><summary>Клип от <time>__.__.2026</time></summary>
+              <div class="winner-columns">
+                <details><summary>❤️ Победители среди поставивших лайк</summary><p class="muted">Список победителей будет добавлен.</p></details>
+                <details><summary>💬 Победители среди оставивших комментарий</summary><p class="muted">Список победителей будет добавлен.</p></details>
+              </div>
+            </details>
+          </div>
+          <p class="archive-note">Даты и списки можно будет добавлять по мере публикации итогов.</p>
+        </details>
+      </div>
+      <a class="external-discussion" href="https://vk.com/topic-197208593_56246088" target="_blank" rel="noopener">Обсуждение со списками победителей ВКонтакте ↗</a>
+    </section>
+
+    <section class="section section-alt" id="promo">
+      <div class="section-heading">
+        <span class="eyebrow">АКТИВИРУЙ И ПОЛУЧАЙ</span>
+        <h2>Промокоды</h2>
+        <p>Следуй инструкции, чтобы активировать промокод и получить ТокКоины.</p>
+      </div>
+      <div class="steps">
+        <article class="step-card"><div class="step-number">01</div><div class="step-body"><h3>Открой виджет</h3><p>Нажми внизу виджета на кнопку «Мои ТокКоины 💰».</p><div class="photo-placeholder">Место для фотографии</div></div></article>
+        <article class="step-card"><div class="step-number">02</div><div class="step-body"><h3>Перейди в личный кабинет</h3><p>После нажатия откроется твой личный кабинет.</p><div class="photo-placeholder">Место для фотографии</div></div></article>
+        <article class="step-card"><div class="step-number">03</div><div class="step-body"><h3>Выбери ввод промокода</h3><p>Нажми кнопку «Ввести промокод».</p><div class="photo-placeholder">Место для фотографии</div></div></article>
+        <article class="step-card"><div class="step-number">04</div><div class="step-body"><h3>Введи промокод</h3><p>Впиши промокод в поле и нажми «Применить».</p><div class="photo-placeholder">Место для фотографии</div></div></article>
+        <article class="step-card"><div class="step-number">05</div><div class="step-body"><h3>Получи ТокКоины</h3><p>После успешной активации случайное количество ТокКоинов будет зачислено на твой счёт. Количество может отличаться для каждого клипа.</p><div class="photo-placeholder">Место для фотографии</div></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="section-heading">
+        <span class="eyebrow">ЕСТЬ ВОПРОСЫ?</span>
+        <h2>Часто задаваемые вопросы</h2>
+        <p>Всё самое важное о накоплении и обмене ТокКоинов.</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item"><summary>Как узнать свой VK ID?</summary><div class="faq-answer"><ol><li>Нажми на свою аватарку в правой части ВКонтакте.</li><li>Выбери пункт «Управление VK ID».</li><li>Твой цифровой ID будет указан под именем и фамилией.</li></ol></div></details>
+        <details class="faq-item"><summary>Как узнать свой ID в Одноклассниках?</summary><div class="faq-answer"><ol><li>Перейди в <a href="https://ok.ru/settings" target="_blank" rel="noopener">настройки профиля</a>.</li><li>Открой раздел «Основное».</li><li>Найди строку «ID вашего профиля» — там указан твой цифровой ID.</li></ol></div></details>
+        <details class="faq-item"><summary>Сколько времени занимает начисление награды?</summary><div class="faq-answer"><p>Начисление наград и выдача призов занимают до <strong>7 рабочих дней</strong>. Выходные и праздничные дни в этот срок не учитываются.</p></div></details>
+        <details class="faq-item"><summary>Что делать, если награда не пришла?</summary><div class="faq-answer"><p>Если с момента подведения итогов прошло более 7 рабочих дней, но награда так и не поступила, напиши в личные сообщения <a href="https://vk.ru/avatariagame_kt" target="_blank" rel="noopener">официального сообщества проекта</a>.</p></div></details>
+        <details class="faq-item"><summary>Можно ли обменять ТокКоины на подарок для другого игрока?</summary><div class="faq-answer"><p>Нет, обмен ТокКоинов доступен только для собственного персонажа. Указывать ID другого игрока запрещено. Нарушение этого правила может привести к блокировке в группе и удалению предмета, уже начисленного другому игроку.</p></div></details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <img src="images/tokcoin.png" alt="" class="footer-coin">
+    <p>ТокКоины | накопительная система</p>
+    <span>Аватария KlipTok</span>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
