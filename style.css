@@ -121,3 +121,8 @@
     transform: translateY(0);
   }
 }
+
+/* Карточка на всю ширину двух колонок */
+.earn-card-wide {
+  grid-column: 1 / -1;
+}
