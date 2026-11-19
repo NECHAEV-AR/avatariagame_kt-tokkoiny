@@ -136,3 +136,15 @@
 .archive-month {
   margin: 0 !important;
 }
+/* Переключение надписей архива */
+.archive-month .close-label {
+  display: none;
+}
+
+.archive-month[open] .open-label {
+  display: none;
+}
+
+.archive-month[open] .close-label {
+  display: inline;
+}
