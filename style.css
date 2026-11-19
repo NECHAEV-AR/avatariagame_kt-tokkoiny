@@ -136,15 +136,19 @@
 .archive-month {
   margin: 0 !important;
 }
-/* Переключение надписей архива */
-.archive-month .close-label {
-  display: none;
+/* Переключение надписей в архиве */
+.archive-month .summary-hint .open-label {
+  display: inline !important;
 }
 
-.archive-month[open] .open-label {
-  display: none;
+.archive-month .summary-hint .close-label {
+  display: none !important;
 }
 
-.archive-month[open] .close-label {
-  display: inline;
+.archive-month[open] .summary-hint .open-label {
+  display: none !important;
+}
+
+.archive-month[open] .summary-hint .close-label {
+  display: inline !important;
 }
