@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#18082e">
+  <meta name="description" content="ТокКоины — накопительная система Аватария KlipTok. Узнай, как получать коины и обменивать их на призы.">
+  <title>ТокКоины — Аватария KlipTok</title>
+  <style>
+    :root {
+      --bg:#10071f; --panel:#1d1032; --panel2:#281344; --purple:#8d35e8;
+      --pink:#ef4de2; --lav:#d9b7ff; --white:#fffaff; --muted:#c8b7da;
+      --line:rgba(220,180,255,.18); --gold:#ffd86d;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;background:radial-gradient(ellipse at 15% 0%,#35105d 0,transparent 34%),radial-gradient(ellipse at 90% 20%,#25105b 0,transparent 32%),var(--bg);color:var(--white);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+    a{color:inherit}
+    .wrap{width:min(1120px,calc(100% - 36px));margin:auto}
+    header{position:sticky;top:0;z-index:20;background:rgba(16,7,31,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;letter-spacing:.08em}
+    .brand img{width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 12px #c34cff)}
+    .brand span{font-size:18px;background:linear-gradient(90deg,#fff,#d89aff,#ff83ed);-webkit-background-clip:text;background-clip:text;color:transparent}
+    nav{display:flex;gap:22px;align-items:center}
+    nav a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:650;transition:.2s}
+    nav a:hover{color:white}
+    .menu{display:none;background:transparent;border:1px solid var(--line);color:white;border-radius:12px;padding:9px 12px;font-size:20px}
+    .hero{padding:52px 0 64px}
+    .hero-card{min-height:475px;position:relative;overflow:hidden;border:1px solid rgba(228,173,255,.28);border-radius:30px;background:#210c43;box-shadow:0 24px 80px #0008}
+    .hero-card:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,5,40,.96) 0%,rgba(30,7,59,.82) 42%,rgba(25,7,54,.12) 100%),url("assets/tokcoins-hero.jpg") center 42%/cover}
+    .hero-content{position:relative;z-index:1;max-width:590px;padding:58px 54px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:#f4c6ff;background:#ffffff12;border:1px solid #e6b2ff44;border-radius:99px;padding:7px 13px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    h1{font-size:clamp(42px,7vw,76px);line-height:.98;letter-spacing:-.055em;margin:22px 0 18px}
+    .gradient{background:linear-gradient(95deg,#fff 4%,#e3a5ff 48%,#ff83e9 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{font-size:18px;color:#e4d5f1;max-width:490px;margin:0 0 28px}
+    .actions{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:0;border-radius:14px;padding:13px 19px;font-weight:800;font-size:14px;cursor:pointer;transition:transform .2s,box-shadow .2s}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px #a735ed55}
+    .primary{background:linear-gradient(110deg,#a33bf0,#ed45d7);color:white}
+    .secondary{border:1px solid #e6baff55;background:#ffffff10;color:white}
+    .coin-float{position:absolute;z-index:1;width:190px;right:5%;bottom:5%;filter:drop-shadow(0 0 30px #d33bff88);transform:rotate(-12deg)}
+    section{padding:58px 0}
+    .section-head{max-width:680px;margin-bottom:28px}
+    .kicker{color:#e78cff;font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+    h2{font-size:clamp(28px,4vw,42px);line-height:1.1;letter-spacing:-.035em;margin:8px 0 12px}
+    .section-head p{color:var(--muted);margin:0}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:linear-gradient(145deg,#281443,#1b0e2e);border:1px solid var(--line);border-radius:21px;padding:23px;min-height:190px;position:relative;overflow:hidden}
+    .card:after{content:"";position:absolute;width:130px;height:130px;border-radius:50%;right:-65px;bottom:-70px;background:#bd39f5;filter:blur(65px);opacity:.25}
+    .icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#9637e7,#e44bdc);font-size:22px;box-shadow:0 7px 22px #9e39dd55}
+    .card h3{margin:17px 0 4px;font-size:18px}
+    .card p{color:var(--muted);font-size:14px;margin:0}
+    .amount{font-size:28px;font-weight:950;color:#f2b4ff;line-height:1.2;margin:8px 0}
+    .note{margin-top:18px;padding:16px 18px;border-radius:16px;background:#ffffff09;border:1px solid var(--line);color:var(--muted);font-size:14px}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
+    .feature{border:1px solid var(--line);border-radius:23px;padding:26px;background:linear-gradient(145deg,#291344,#180d2a)}
+    .steps{counter-reset:step;display:grid;gap:13px}
+    .step{display:flex;gap:14px;align-items:flex-start;color:var(--muted);font-size:14px}
+    .step:before{counter-increment:step;content:counter(step);flex:0 0 30px;height:30px;border-radius:10px;display:grid;place-items:center;background:#9d39e8;color:white;font-weight:900}
+    .step strong{color:white}
+    .link{color:#efa4ff;text-decoration:none;border-bottom:1px dashed #efa4ff88}
+    .link:hover{color:white}
+    .warning{border-left:3px solid var(--pink);padding:12px 15px;background:#e348d310;color:#e6d6f0;border-radius:0 12px 12px 0;font-size:14px;margin-top:18px}
+    .faq{display:grid;gap:11px}
+    details{background:#211235;border:1px solid var(--line);border-radius:16px;padding:0 18px}
+    summary{cursor:pointer;list-style:none;padding:17px 28px 17px 0;font-weight:800;position:relative}
+    summary::-webkit-details-marker{display:none}
+    summary:after{content:"＋";position:absolute;right:0;color:#e78cff;font-size:20px;top:13px}
+    details[open] summary:after{content:"−"}
+    details p{color:var(--muted);font-size:14px;margin:0;padding:0 0 18px}
+    .links-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .link-card{display:flex;align-items:center;gap:13px;text-decoration:none;padding:18px;border:1px solid var(--line);border-radius:17px;background:#211235;transition:.2s}
+    .link-card:hover{background:#30174a;transform:translateY(-2px)}
+    .link-card b{display:block}.link-card small{color:var(--muted)}
+    footer{border-top:1px solid var(--line);padding:28px 0 40px;color:#a995bc;font-size:13px}
+    .footer-inner{display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap}
+    .footer-brand{display:flex;align-items:center;gap:9px;font-weight:900;color:#e9caff}
+    .footer-brand img{width:34px;height:34px;object-fit:contain}
+    @media(max-width:800px){nav{display:none;position:absolute;top:76px;left:0;right:0;padding:18px;background:#180b2b;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}nav.open{display:flex}.menu{display:block}.hero{padding:25px 0 38px}.hero-card{min-height:560px}.hero-card:before{background:linear-gradient(180deg,rgba(20,5,40,.96) 0%,rgba(30,7,59,.8) 48%,rgba(25,7,54,.25) 100%),url("assets/tokcoins-hero.jpg") 58% center/cover}.hero-content{padding:35px 25px}.coin-float{width:130px;right:5%;bottom:3%}.cards{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}.links-grid{grid-template-columns:1fr}}
+    @media(max-width:500px){.wrap{width:min(100% - 26px,1120px)}.brand span{font-size:15px}.brand img{width:42px;height:42px}.cards{grid-template-columns:1fr}.hero-card{min-height:600px}.hero-content{padding:30px 21px}.lead{font-size:16px}.coin-float{width:112px;right:2%;bottom:2%}section{padding:42px 0}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><img src="assets/tokcoin-logo.png" alt="Логотип ТокКоина"><span>TOKCOINS</span></a>
+    <nav id="nav">
+      <a href="#earn">Как заработать</a><a href="#promo">Промокоды</a><a href="#faq">Вопросы и ответы</a><a href="#contacts">Полезные ссылки</a>
+    </nav>
+    <button class="menu" id="menu" aria-label="Открыть меню" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div class="hero-card">
+      <div class="hero-content">
+        <span class="eyebrow">✦ Накопительная система KlipTok</span>
+        <h1><span class="gradient">ТокКоины</span><br>твоё время сиять!</h1>
+        <p class="lead">Участвуй в активностях, собирай коины и обменивай их на уникальные призы от нашего проекта.</p>
+        <div class="actions">
+          <a class="btn primary" href="#earn">Как получить коины</a>
+          <a class="btn secondary" href="#faq">Частые вопросы</a>
+        </div>
+      </div>
+      <img class="coin-float" src="assets/tokcoin-logo.png" alt="" aria-hidden="true">
+    </div>
+  </div>
+
+  <section id="about" style="padding-top:8px">
+    <div class="wrap">
+      <div class="feature" style="display:flex;align-items:center;gap:22px;flex-wrap:wrap;background:linear-gradient(110deg,#281044,#42136b 62%,#241044)">
+        <img src="assets/tokcoin-logo.png" alt="Фирменная монета ТокКоин" style="width:112px;max-width:30%;filter:drop-shadow(0 0 22px #d64cff)">
+        <div style="flex:1;min-width:220px"><div class="kicker">Знакомься с системой</div><h2 style="margin:7px 0 8px">Что такое ТокКоины?</h2><p style="color:var(--muted);margin:0">ТокКоины — валюта накопительной системы, которую можно обменивать на уникальные призы от проекта. Получай их за активности КлипТока и копи на желанные награды.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="earn">
+    <div class="wrap">
+      <div class="section-head"><div class="kicker">Собирай награды</div><h2>Как получить ТокКоины?</h2><p>Есть несколько способов пополнить свой баланс. Выбирай активности и не пропускай новые возможности!</p></div>
+      <div class="cards">
+        <article class="card"><div class="icon">▶</div><h3>Просмотр клипов</h3><p>Под видео в VK Клипах и TikTok публикуется специальный промокод. Введи его и получи случайное количество коинов.</p></article>
+        <article class="card"><div class="icon">💬</div><h3>Комментарий под клипом</h3><div class="amount">10 ТокКоинов</div><p>15 случайно выбранных участников среди оставивших комментарий получают награду.</p></article>
+        <article class="card"><div class="icon">♥</div><h3>Лайк на клип</h3><div class="amount">5 ТокКоинов</div><p>15 случайно выбранных участников среди поставивших лайк получают награду.</p></article>
+        <article class="card"><div class="icon">🏆</div><h3>Конкурсы в беседе</h3><div class="amount">10–50</div><p>Размер награды зависит от сложности активности и её условий.</p></article>
+        <article class="card"><div class="icon">🎉</div><h3>Конкурсы группы</h3><div class="amount">По условиям</div><p>Количество ТокКоинов указывается в правилах конкретного конкурса.</p></article>
+        <article class="card"><div class="icon">✦</div><h3>Следи за новостями</h3><p>Новые активности и способы получения коинов могут появляться в официальных сообществах KlipTok.</p></article>
+      </div>
+      <div class="note">💡 Победителей выбирают случайным образом: 15 человек среди поставивших лайк и отдельно 15 человек среди оставивших комментарий.</div>
+    </div>
+  </section>
+
+  <section id="promo">
+    <div class="wrap">
+      <div class="section-head"><div class="kicker">Активируй код</div><h2>Куда вводить промокод?</h2><p>Промокоды публикуются под клипами. За каждый ролик начисляется разное количество ТокКоинов.</p></div>
+      <div class="two-col">
+        <div class="feature">
+          <h3 style="margin-top:0">Всего несколько шагов</h3>
+          <div class="steps">
+            <div class="step"><div><strong>Открой виджет</strong><br>Найди в самом низу кнопку «Мои ТокКоины 💰».</div></div>
+            <div class="step"><div><strong>Перейди в личный кабинет</strong><br>Нажми на кнопку, чтобы открыть свой кабинет.</div></div>
+            <div class="step"><div><strong>Введи промокод</strong><br>Выбери «Ввести промокод» и укажи код в специальном поле.</div></div>
+            <div class="step"><div><strong>Нажми «Применить»</strong><br>При успешной активации коины будут начислены на твой счёт.</div></div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="icon">💜</div>
+          <h3>Сколько коинов даст код?</h3>
+          <p style="color:var(--muted)">Количество ТокКоинов за промокод зависит от конкретного клипа. Для разных видео оно может отличаться.</p>
+          <div class="warning">Если промокод не сработал, проверь правильность его ввода и условия публикации под соответствующим клипом.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop">
+    <div class="wrap">
+      <div class="section-head"><div class="kicker">Обменивай накопленное</div><h2>На что можно потратить ТокКоины?</h2><p>ТокКоины можно обменивать на уникальные призы от проекта. Среди них — элементы одежды из костюма «Star shine» и другие награды.</p></div>
+      <div class="feature" style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+        <img src="assets/tokcoin-logo.png" alt="ТокКоин" style="width:110px;max-width:30%;filter:drop-shadow(0 0 18px #c34cff)">
+        <div style="flex:1;min-width:210px"><h3 style="margin-top:0">Важное правило покупки</h3><p style="color:var(--muted);margin-bottom:0">Обменивать ТокКоины разрешено только на предметы для <strong style="color:white">своего персонажа</strong>. Указывать ID другого игрока для начисления купленного предмета строго запрещено.</p></div>
+      </div>
+      <div class="warning">При нарушении этого правила организаторы вправе заблокировать пользователя в группе, а также отнять уже начисленную вещь у другого игрока.</div>
+      <p style="color:var(--muted);font-size:13px;margin-top:15px">Актуальный ассортимент и стоимость призов уточняй в официальном магазинчике проекта.</p>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head"><div class="kicker">Разберёмся вместе</div><h2>Вопросы и ответы</h2><p>Собрали важную информацию о накоплении, покупке призов и начислениях.</p></div>
+      <div class="faq">
+        <details><summary>Можно ли купить вещь и указать ID другого игрока?</summary><p>Нет. Обменивать ТокКоины можно только на предметы для своего персонажа. Указывать ID других пользователей для начисления купленного предмета строго запрещено. При нарушении организаторы вправе заблокировать пользователя в группе и отнять уже начисленную вещь у другого игрока.</p></details>
+        <details><summary>Как начисляются ТокКоины за лайк или комментарий?</summary><p>Случайным образом выбираются 15 участников среди тех, кто поставил лайк, и отдельно 15 участников среди тех, кто оставил комментарий под клипом в официальной группе игры. За комментарий предусмотрено 10 ТокКоинов, за лайк — 5 ТокКоинов.</p></details>
+        <details><summary>Где узнать, попал(а) ли я в число победителей?</summary><p>Списки участников, выбранных случайным образом, публикуются в <a class="link" href="https://vk.com/topic-197208593_56246088" target="_blank" rel="noopener">специальном обсуждении</a>.</p></details>
+        <details><summary>Какие комментарии подходят для участия?</summary><p>Комментарий может быть любым — например, стикер или ваше любимое «ахахаха». Главное, чтобы он не нарушал правила социальной сети и официальной группы игры.</p></details>
+        <details><summary>Куда вводить промокод?</summary><p>В самом низу виджета нажми «Мои ТокКоины 💰» и перейди в личный кабинет. Затем нажми «Ввести промокод», укажи код в специальном поле и выбери «Применить». При успешной активации на твой счёт поступит некоторое количество ТокКоинов. За каждый клип или TikTok оно может быть разным.</p></details>
+        <details><summary>Где найти свой цифровой ID ВКонтакте?</summary><p>Нажми на свою аватарку в правой части экрана ВКонтакте, затем выбери «Управление VK ID». ID находится в левой части экрана, под именем и фамилией.</p></details>
+        <details><summary>Где найти свой цифровой ID в Одноклассниках?</summary><p>Зайди в <a class="link" href="https://ok.ru/settings" target="_blank" rel="noopener">настройки Одноклассников</a>, открой раздел «Основное» и найди пункт «ID вашего профиля». Указанные цифры и есть твой ID.</p></details>
+        <details><summary>Когда придёт награда?</summary><p>Все награды начисляются в течение 7 рабочих дней, выходные не учитываются. Если по истечении этого срока предмет не появился, напиши в личные сообщения официального сообщества: <a class="link" href="https://vk.ru/avatariagame_kt" target="_blank" rel="noopener">Аватария KlipTok</a>. Организаторы уточнят ID и возможные причины ошибки.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacts">
+    <div class="wrap">
+      <div class="section-head"><div class="kicker">Будь на связи</div><h2>Полезные ссылки</h2><p>Следи за активностями и проверяй публикации проекта.</p></div>
+      <div class="links-grid">
+        <a class="link-card" href="https://vk.ru/avatariagame_kt" target="_blank" rel="noopener"><span class="icon">ВК</span><span><b>Официальное сообщество</b><small>Аватария KlipTok</small></span></a>
+        <a class="link-card" href="https://vk.com/topic-197208593_56246088" target="_blank" rel="noopener"><span class="icon">☷</span><span><b>Списки победителей</b><small>Результаты случайного выбора</small></span></a>
+        <a class="link-card" href="https://ok.ru/settings" target="_blank" rel="noopener"><span class="icon">ОК</span><span><b>Настройки Одноклассников</b><small>Как найти свой ID</small></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-brand"><img src="assets/tokcoin-logo.png" alt=""> TOKCOINS · Аватария KlipTok</div>
+    <div>Информационная страница накопительной системы.</div>
+  </div>
+</footer>
+<script>
+  const menu = document.getElementById('menu');
+  const nav = document.getElementById('nav');
+  menu.addEventListener('click', () => {
+    const opened = nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded', String(opened));
+    menu.textContent = opened ? '×' : '☰';
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    menu.setAttribute('aria-expanded', 'false');
+    menu.textContent = '☰';
+  }));
+</script>
+</body>
+</html>
