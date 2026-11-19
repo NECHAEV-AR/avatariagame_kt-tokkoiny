@@ -126,3 +126,7 @@
 .earn-card-wide {
   grid-column: 1 / -1;
 }
+/* Расстояние между месяцами в архиве */
+.archive-month + .archive-month {
+  margin-top: 10px;
+}
