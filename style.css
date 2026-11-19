@@ -45,3 +45,79 @@
   box-shadow: 0 0 18px rgba(213, 54, 255, 0.55);
   transform: translateY(-4px);
 }
+
+/* Раскрывающиеся карточки способов получения ТокКоинов */
+
+.earn-card {
+  padding: 22px;
+  cursor: default;
+}
+
+.earn-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+  list-style: none;
+}
+
+.earn-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.earn-toggle::marker {
+  content: "";
+}
+
+.earn-toggle .card-symbol {
+  margin-bottom: 14px;
+}
+
+.earn-toggle h3 {
+  margin: 0 0 16px;
+}
+
+.jmyak {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #922bff, #ed36c8);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: 0 0 14px rgba(213, 54, 255, 0.25);
+}
+
+.jmyak .arrow {
+  transition: transform 0.25s ease;
+}
+
+.earn-card[open] .jmyak .arrow {
+  transform: rotate(180deg);
+}
+
+.earn-content {
+  padding-top: 18px;
+  animation: earnReveal 0.25s ease;
+}
+
+.earn-content p:first-child {
+  margin-top: 0;
+}
+
+.earn-content p:last-of-type {
+  margin-bottom: 14px;
+}
+
+@keyframes earnReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
