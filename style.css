@@ -126,16 +126,13 @@
 .earn-card-wide {
   grid-column: 1 / -1;
 }
-/* Расстояние между месяцами в архиве */
-.archive-month + .archive-month {
-  margin-top: 15px;
-}
-/* Меняем надпись в зависимости от состояния архива */
-.archive-month[open] > summary .summary-hint {
-  font-size: 0;
+/* Расстояние между месяцами архива */
+.archive-wrap {
+  display: grid !important;
+  grid-template-columns: 1fr;
+  gap: 12px !important;
 }
 
-.archive-month[open] > summary .summary-hint::after {
-  content: "Закрыть архив";
-  font-size: 12px;
+.archive-month {
+  margin: 0 !important;
 }
