@@ -128,5 +128,14 @@
 }
 /* Расстояние между месяцами в архиве */
 .archive-month + .archive-month {
-  margin-top: 10px;
+  margin-top: 15px;
+}
+/* Меняем надпись в зависимости от состояния архива */
+.archive-month[open] > summary .summary-hint {
+  font-size: 0;
+}
+
+.archive-month[open] > summary .summary-hint::after {
+  content: "Закрыть архив";
+  font-size: 12px;
 }
