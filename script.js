@@ -29,8 +29,8 @@
   }
 
   const products = [
-  { name: 'Картина «GLAM»', price: 666, image: 'images/Kartina3-converted-compressed.webp', category: 'furniture', isNew: true }
-    { name: 'Тапочки «BWA»', price: 585, image: 'images/IMG_9324.webp', category: 'clothes', isNew: true },
+  { name: 'Картина «GLAM»', price: 666, image: 'images/Kartina3-converted-compressed.webp', category: 'furniture', isNew: true },
+{ name: 'Тапочки «BWA»', price: 585, image: 'images/IMG_9324.webp', category: 'clothes', isNew: true },
     { name: 'Кресло «Каблук Любы»', price: 483, image: 'images/IMG_9323.webp', category: 'furniture', isNew: true },
     { name: 'Светлая накидка «Аксель»', price: 449, image: 'images/IMG_9321.webp', category: 'axel', isNew: false },
     { name: 'Тёмная накидка «Аксель»', price: 449, image: 'images/IMG_9320.webp', category: 'axel', isNew: false },
