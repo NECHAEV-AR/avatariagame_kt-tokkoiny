@@ -1,5 +1,5 @@
 
- // Каталог товаров.
+// Каталог товаров.
 // Для добавления фотографии укажи путь в поле image.
 // Для отметки «Новинка» установи isNew: true.
 
@@ -24,8 +24,9 @@ const products = [
 
 const grid = document.getElementById("productGrid");
 
-// Остальным страницам каталог не нужен.
-if (grid) {
+if (grid && !grid.dataset.initialized) {
+  grid.dataset.initialized = "true";
+
   const search = document.getElementById("productSearch");
   const sort = document.getElementById("productSort");
   const empty = document.getElementById("emptyProducts");
@@ -38,7 +39,6 @@ if (grid) {
     if (!document.getElementById("catalogExtraStyles")) {
       const style = document.createElement("style");
       style.id = "catalogExtraStyles";
-
       style.textContent = `
         .category-filters {
           display: flex;
@@ -103,11 +103,10 @@ if (grid) {
           }
         }
       `;
-
       document.head.append(style);
     }
 
-    // Переключение категорий.
+    // Переключение уже существующих кнопок из shop.html.
     categoryFilters.querySelectorAll(".category-filter").forEach(button => {
       button.addEventListener("click", () => {
         activeCategory = button.dataset.category;
@@ -122,7 +121,6 @@ if (grid) {
       });
     });
 
-    // Отображение товаров.
     function renderProducts() {
       const term = search.value.trim().toLocaleLowerCase("ru");
 
@@ -140,7 +138,6 @@ if (grid) {
           return matchesSearch && matchesCategory;
         });
 
-      // Сортировка товаров.
       if (sort.value === "asc") {
         list.sort((a, b) => a.price - b.price || a.order - b.order);
       } else if (sort.value === "desc") {
@@ -155,7 +152,6 @@ if (grid) {
         const card = document.createElement("article");
         card.className = "product-card";
 
-        // Изображение товара.
         const photo = document.createElement("div");
         photo.className = "product-image";
         photo.setAttribute("aria-label", `Изображение товара: ${product.name}`);
@@ -167,7 +163,6 @@ if (grid) {
           photo.append(image);
         }
 
-        // Метка «Новинка».
         if (product.isNew) {
           const badge = document.createElement("span");
           badge.className = "product-badge";
@@ -175,11 +170,9 @@ if (grid) {
           photo.append(badge);
         }
 
-        // Название.
         const title = document.createElement("h3");
         title.textContent = product.name;
 
-        // Цена.
         const price = document.createElement("div");
         price.className = "product-price";
 
@@ -200,10 +193,11 @@ if (grid) {
       empty.hidden = list.length !== 0;
     }
 
-    // Поиск и сортировка.
     search.addEventListener("input", renderProducts);
     sort.addEventListener("change", renderProducts);
 
     renderProducts();
+  } else {
+    grid.dataset.initialized = "";
   }
 }
