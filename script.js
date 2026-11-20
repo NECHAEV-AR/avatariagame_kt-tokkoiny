@@ -1,5 +1,5 @@
 
-// Каталог товаров.
+ // Каталог товаров.
 // Для добавления фотографии укажи путь в поле image.
 // Для отметки «Новинка» установи isNew: true.
 
@@ -29,31 +29,23 @@ if (grid) {
   const search = document.getElementById("productSearch");
   const sort = document.getElementById("productSort");
   const empty = document.getElementById("emptyProducts");
+  const categoryFilters = document.getElementById("categoryFilters");
 
-  if (search && sort && empty) {
-
-    // Категории каталога.
-    const categories = [
-      { id: "all", name: "Все товары" },
-      { id: "star-shine", name: "Костюм «Star shine»" },
-      { id: "axel", name: "Коллекция «Аксель»" },
-      { id: "clothes", name: "Одежда" },
-      { id: "furniture", name: "Мебель" },
-      { id: "unique", name: "Уникальное" }
-    ];
-
+  if (search && sort && empty && categoryFilters) {
     let activeCategory = "all";
 
-    // Стили кнопок категорий и метки «Новинка».
+    // Стили категорий и метки «Новинка».
     if (!document.getElementById("catalogExtraStyles")) {
       const style = document.createElement("style");
       style.id = "catalogExtraStyles";
+
       style.textContent = `
         .category-filters {
           display: flex;
           flex-wrap: wrap;
+          justify-content: center;
           gap: 10px;
-          margin: 22px 0;
+          margin: 22px 0 28px;
         }
 
         .category-filter {
@@ -102,6 +94,7 @@ if (grid) {
         @media (max-width: 600px) {
           .category-filters {
             gap: 8px;
+            margin: 18px 0 22px;
           }
 
           .category-filter {
@@ -110,26 +103,16 @@ if (grid) {
           }
         }
       `;
+
       document.head.append(style);
     }
 
-    // Создаём панель категорий перед товарами.
-    const categoryFilters = document.createElement("div");
-    categoryFilters.className = "category-filters";
-    categoryFilters.setAttribute("aria-label", "Категории товаров");
-
-    categories.forEach(category => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "category-filter";
-      button.textContent = category.name;
-      button.dataset.category = category.id;
-      button.setAttribute("aria-pressed", "false");
-
+    // Переключение категорий.
+    categoryFilters.querySelectorAll(".category-filter").forEach(button => {
       button.addEventListener("click", () => {
-        activeCategory = category.id;
+        activeCategory = button.dataset.category;
 
-        categoryFilters.querySelectorAll("button").forEach(item => {
+        categoryFilters.querySelectorAll(".category-filter").forEach(item => {
           const isActive = item.dataset.category === activeCategory;
           item.classList.toggle("active", isActive);
           item.setAttribute("aria-pressed", String(isActive));
@@ -137,17 +120,9 @@ if (grid) {
 
         renderProducts();
       });
-
-      categoryFilters.append(button);
     });
 
-    grid.parentNode.insertBefore(categoryFilters, grid);
-
-    // Выделяем категорию «Все товары» при открытии.
-    const allButton = categoryFilters.querySelector('[data-category="all"]');
-    allButton.classList.add("active");
-    allButton.setAttribute("aria-pressed", "true");
-
+    // Отображение товаров.
     function renderProducts() {
       const term = search.value.trim().toLocaleLowerCase("ru");
 
@@ -165,7 +140,7 @@ if (grid) {
           return matchesSearch && matchesCategory;
         });
 
-      // Сортировка.
+      // Сортировка товаров.
       if (sort.value === "asc") {
         list.sort((a, b) => a.price - b.price || a.order - b.order);
       } else if (sort.value === "desc") {
@@ -180,6 +155,7 @@ if (grid) {
         const card = document.createElement("article");
         card.className = "product-card";
 
+        // Изображение товара.
         const photo = document.createElement("div");
         photo.className = "product-image";
         photo.setAttribute("aria-label", `Изображение товара: ${product.name}`);
@@ -199,9 +175,11 @@ if (grid) {
           photo.append(badge);
         }
 
+        // Название.
         const title = document.createElement("h3");
         title.textContent = product.name;
 
+        // Цена.
         const price = document.createElement("div");
         price.className = "product-price";
 
@@ -222,6 +200,7 @@ if (grid) {
       empty.hidden = list.length !== 0;
     }
 
+    // Поиск и сортировка.
     search.addEventListener("input", renderProducts);
     sort.addEventListener("change", renderProducts);
 
