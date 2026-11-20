@@ -1,21 +1,25 @@
-// Каталог товаров. Для добавления фотографии укажи путь в поле image.
+
+// Каталог товаров.
+// Для добавления фотографии укажи путь в поле image.
+// Для отметки «Новинка» установи isNew: true.
+
 const products = [
-  { name: "Тапочки «BWA»", price: 585, image: "" },
-  { name: "Кресло «Каблук Любы»", price: 483, image: "" },
-  { name: "Светлая накидка «Аксель»", price: 449, image: "" },
-  { name: "Тёмная накидка «Аксель»", price: 449, image: "" },
-  { name: "Фотодоска «Клипток»", price: 250, image: "" },
-  { name: "Сумка доставщика «Onion»", price: 435, image: "" },
-  { name: "Лонгслив «Крысиная любовь»", price: 450, image: "" },
-  { name: "Клипбокс", price: 599, image: "" },
-  { name: "Шапка «Аксель»", price: 333, image: "" },
-  { name: "Наушники «Аксель»", price: 444, image: "" },
-  { name: "Шапка бини «Star shine»", price: 250, image: "" },
-  { name: "Очки «Star shine»", price: 200, image: "" },
-  { name: "Серьга «Star shine»", price: 150, image: "" },
-  { name: "Лонгслив «Star shine»", price: 550, image: "" },
-  { name: "Штаны «Star shine»", price: 300, image: "" },
-  { name: "Кеды «Star shine»", price: 250, image: "" }
+  { name: "Тапочки «BWA»", price: 585, image: "", category: "clothes", isNew: true },
+  { name: "Кресло «Каблук Любы»", price: 483, image: "", category: "furniture", isNew: true },
+  { name: "Светлая накидка «Аксель»", price: 449, image: "", category: "axel", isNew: false },
+  { name: "Тёмная накидка «Аксель»", price: 449, image: "", category: "axel", isNew: false },
+  { name: "Фотодоска «Клипток»", price: 250, image: "", category: "furniture", isNew: false },
+  { name: "Сумка доставщика «Onion»", price: 435, image: "", category: "clothes", isNew: false },
+  { name: "Лонгслив «Крысиная любовь»", price: 450, image: "", category: "clothes", isNew: false },
+  { name: "Клипбокс", price: 599, image: "", category: "unique", isNew: false },
+  { name: "Шапка «Аксель»", price: 333, image: "", category: "axel", isNew: false },
+  { name: "Наушники «Аксель»", price: 444, image: "", category: "axel", isNew: false },
+  { name: "Шапка бини «Star shine»", price: 250, image: "", category: "star-shine", isNew: false },
+  { name: "Очки «Star shine»", price: 200, image: "", category: "star-shine", isNew: false },
+  { name: "Серьга «Star shine»", price: 150, image: "", category: "star-shine", isNew: false },
+  { name: "Лонгслив «Star shine»", price: 550, image: "", category: "star-shine", isNew: false },
+  { name: "Штаны «Star shine»", price: 300, image: "", category: "star-shine", isNew: false },
+  { name: "Кеды «Star shine»", price: 250, image: "", category: "star-shine", isNew: false }
 ];
 
 const grid = document.getElementById("productGrid");
@@ -26,15 +30,142 @@ if (grid) {
   const sort = document.getElementById("productSort");
   const empty = document.getElementById("emptyProducts");
 
-  // Защита от случайно неполной разметки магазина.
   if (search && sort && empty) {
+
+    // Категории каталога.
+    const categories = [
+      { id: "all", name: "Все товары" },
+      { id: "star-shine", name: "Костюм «Star shine»" },
+      { id: "axel", name: "Коллекция «Аксель»" },
+      { id: "clothes", name: "Одежда" },
+      { id: "furniture", name: "Мебель" },
+      { id: "unique", name: "Уникальное" }
+    ];
+
+    let activeCategory = "all";
+
+    // Стили кнопок категорий и метки «Новинка».
+    if (!document.getElementById("catalogExtraStyles")) {
+      const style = document.createElement("style");
+      style.id = "catalogExtraStyles";
+      style.textContent = `
+        .category-filters {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          margin: 22px 0;
+        }
+
+        .category-filter {
+          border: 1px solid rgba(255,255,255,0.13);
+          border-radius: 30px;
+          padding: 10px 17px;
+          background: rgba(255,255,255,0.05);
+          color: inherit;
+          font: inherit;
+          font-size: 14px;
+          cursor: pointer;
+          transition: 0.2s ease;
+        }
+
+        .category-filter:hover {
+          background: rgba(185,100,255,0.16);
+          border-color: rgba(200,130,255,0.55);
+        }
+
+        .category-filter.active {
+          background: linear-gradient(135deg, #a34fe5, #e34fa9);
+          border-color: transparent;
+          color: #fff;
+        }
+
+        .product-image {
+          position: relative;
+        }
+
+        .product-badge {
+          position: absolute;
+          top: 12px;
+          left: 12px;
+          z-index: 2;
+          padding: 6px 11px;
+          border-radius: 20px;
+          background: linear-gradient(135deg, #ff4fa3, #a34fe5);
+          color: #fff;
+          font-size: 11px;
+          font-weight: 800;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+          box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 600px) {
+          .category-filters {
+            gap: 8px;
+          }
+
+          .category-filter {
+            padding: 9px 13px;
+            font-size: 12px;
+          }
+        }
+      `;
+      document.head.append(style);
+    }
+
+    // Создаём панель категорий перед товарами.
+    const categoryFilters = document.createElement("div");
+    categoryFilters.className = "category-filters";
+    categoryFilters.setAttribute("aria-label", "Категории товаров");
+
+    categories.forEach(category => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "category-filter";
+      button.textContent = category.name;
+      button.dataset.category = category.id;
+      button.setAttribute("aria-pressed", "false");
+
+      button.addEventListener("click", () => {
+        activeCategory = category.id;
+
+        categoryFilters.querySelectorAll("button").forEach(item => {
+          const isActive = item.dataset.category === activeCategory;
+          item.classList.toggle("active", isActive);
+          item.setAttribute("aria-pressed", String(isActive));
+        });
+
+        renderProducts();
+      });
+
+      categoryFilters.append(button);
+    });
+
+    grid.parentNode.insertBefore(categoryFilters, grid);
+
+    // Выделяем категорию «Все товары» при открытии.
+    const allButton = categoryFilters.querySelector('[data-category="all"]');
+    allButton.classList.add("active");
+    allButton.setAttribute("aria-pressed", "true");
+
     function renderProducts() {
       const term = search.value.trim().toLocaleLowerCase("ru");
 
       let list = products
         .map((product, order) => ({ ...product, order }))
-        .filter(product => product.name.toLocaleLowerCase("ru").includes(term));
+        .filter(product => {
+          const matchesSearch = product.name
+            .toLocaleLowerCase("ru")
+            .includes(term);
 
+          const matchesCategory =
+            activeCategory === "all" ||
+            product.category === activeCategory;
+
+          return matchesSearch && matchesCategory;
+        });
+
+      // Сортировка.
       if (sort.value === "asc") {
         list.sort((a, b) => a.price - b.price || a.order - b.order);
       } else if (sort.value === "desc") {
@@ -60,6 +191,14 @@ if (grid) {
           photo.append(image);
         }
 
+        // Метка «Новинка».
+        if (product.isNew) {
+          const badge = document.createElement("span");
+          badge.className = "product-badge";
+          badge.textContent = "Новинка";
+          photo.append(badge);
+        }
+
         const title = document.createElement("h3");
         title.textContent = product.name;
 
@@ -71,7 +210,11 @@ if (grid) {
         coin.alt = "";
         coin.setAttribute("aria-hidden", "true");
 
-        price.append(coin, document.createTextNode(`${product.price} ТокКоинов`));
+        price.append(
+          coin,
+          document.createTextNode(`${product.price} ТокКоинов`)
+        );
+
         card.append(photo, title, price);
         grid.append(card);
       });
@@ -81,6 +224,7 @@ if (grid) {
 
     search.addEventListener("input", renderProducts);
     sort.addEventListener("change", renderProducts);
+
     renderProducts();
   }
 }
