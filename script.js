@@ -29,22 +29,22 @@
   }
 
   const products = [
-    { name: 'Тапочки «BWA»', price: 585, image: 'images/IMG_9324.png', category: 'clothes', isNew: true },
-    { name: 'Кресло «Каблук Любы»', price: 483, image: 'images/IMG_9323.png', category: 'furniture', isNew: true },
-    { name: 'Светлая накидка «Аксель»', price: 449, image: 'images/IMG_9321.png', category: 'axel', isNew: false },
-    { name: 'Тёмная накидка «Аксель»', price: 449, image: 'images/IMG_9320.png', category: 'axel', isNew: false },
-    { name: 'Фотодоска «Клипток»', price: 250, image: 'images/IMG_9311.png', category: 'furniture', isNew: false },
-    { name: 'Сумка доставщика «Onion»', price: 435, image: 'images/IMG_9312.png', category: 'clothes', isNew: false },
-    { name: 'Лонгслив «Крысиная любовь»', price: 450, image: 'images/IMG_9310.png', category: 'clothes', isNew: false },
-    { name: 'Клипбокс', price: 599, image: 'images/IMG_9309.png', category: 'unique', isNew: false },
-    { name: 'Шапка «Аксель»', price: 333, image: 'images/IMG_9313.png', category: 'axel', isNew: false },
-    { name: 'Наушники «Аксель»', price: 444, image: 'images/IMG_9314.png', category: 'axel', isNew: false },
-    { name: 'Шапка бини «Star shine»', price: 250, image: 'images/IMG_9319.png', category: 'star-shine', isNew: false },
-    { name: 'Очки «Star shine»', price: 200, image: 'images/IMG_9315.png', category: 'star-shine', isNew: false },
-    { name: 'Серьга «Star shine»', price: 150, image: 'images/IMG_9318.png', category: 'star-shine', isNew: false },
-    { name: 'Лонгслив «Star shine»', price: 550, image: 'images/IMG_9317.png', category: 'star-shine', isNew: false },
-    { name: 'Штаны «Star shine»', price: 300, image: 'images/IMG_9316.png', category: 'star-shine', isNew: false },
-    { name: 'Кеды «Star shine»', price: 250, image: 'images/IMG_9322.png', category: 'star-shine', isNew: false }
+    { name: 'Тапочки «BWA»', price: 585, image: 'images/IMG_9324.webp', category: 'clothes', isNew: true },
+    { name: 'Кресло «Каблук Любы»', price: 483, image: 'images/IMG_9323.webp', category: 'furniture', isNew: true },
+    { name: 'Светлая накидка «Аксель»', price: 449, image: 'images/IMG_9321.webp', category: 'axel', isNew: false },
+    { name: 'Тёмная накидка «Аксель»', price: 449, image: 'images/IMG_9320.webp', category: 'axel', isNew: false },
+    { name: 'Фотодоска «Клипток»', price: 250, image: 'images/IMG_9311.webp', category: 'furniture', isNew: false },
+    { name: 'Сумка доставщика «Onion»', price: 435, image: 'images/IMG_9312.webp', category: 'clothes', isNew: false },
+    { name: 'Лонгслив «Крысиная любовь»', price: 450, image: 'images/IMG_9310.webp', category: 'clothes', isNew: false },
+    { name: 'Клипбокс', price: 599, image: 'images/IMG_9309.webp', category: 'unique', isNew: false },
+    { name: 'Шапка «Аксель»', price: 333, image: 'images/IMG_9313.webp', category: 'axel', isNew: false },
+    { name: 'Наушники «Аксель»', price: 444, image: 'images/IMG_9314.webp', category: 'axel', isNew: false },
+    { name: 'Шапка бини «Star shine»', price: 250, image: 'images/IMG_9319.webp', category: 'star-shine', isNew: false },
+    { name: 'Очки «Star shine»', price: 200, image: 'images/IMG_9315.webp', category: 'star-shine', isNew: false },
+    { name: 'Серьга «Star shine»', price: 150, image: 'images/IMG_9318.webp', category: 'star-shine', isNew: false },
+    { name: 'Лонгслив «Star shine»', price: 550, image: 'images/IMG_9317.webp', category: 'star-shine', isNew: false },
+    { name: 'Штаны «Star shine»', price: 300, image: 'images/IMG_9316.webp', category: 'star-shine', isNew: false },
+    { name: 'Кеды «Star shine»', price: 250, image: 'images/IMG_9322.webp', category: 'star-shine', isNew: false }
   ];
 
   const categoryIcons = {
