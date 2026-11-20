@@ -192,7 +192,7 @@
       price.className = 'product-price';
 
       const coin = document.createElement('img');
-      coin.src = 'images/tokcoin.svg';
+      coin.src = 'images/tokcoin.webp';
       coin.alt = '';
       coin.setAttribute('aria-hidden', 'true');
       coin.onerror = () => {
