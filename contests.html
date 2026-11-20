@@ -1,0 +1,430 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#170b2d">
+  <meta name="description" content="Архив конкурсов Аватарского KlipTok — история мероприятий, задания, условия и итоги.">
+  <title>Архив конкурсов | Аватарский KlipTok</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .contest-intro {
+      max-width: 760px;
+      margin: 0 auto 35px;
+      text-align: center;
+    }
+
+    .contest-intro h2 {
+      margin-bottom: 12px;
+    }
+
+    .contest-intro p {
+      color: #aaa0bb;
+    }
+
+    .contest-tools {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 30px 0;
+    }
+
+    .contest-tools select,
+    .contest-tools input {
+      min-width: 190px;
+      padding: 12px 16px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 12px;
+      background: #211333;
+      color: #fff;
+      font: inherit;
+    }
+
+    .contest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
+    }
+
+    .contest-card {
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 18px;
+      background: rgba(255,255,255,.035);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .contest-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(190,120,255,.4);
+    }
+
+    .contest-cover {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 175px;
+      padding: 20px;
+      background: linear-gradient(135deg, #30164d, #6d286f, #211333);
+      text-align: center;
+    }
+
+    .contest-cover img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .contest-cover-placeholder {
+      color: rgba(255,255,255,.85);
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .contest-status {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 2;
+      padding: 6px 11px;
+      border-radius: 20px;
+      background: rgba(24,12,39,.85);
+      color: #d7b2ff;
+      font-size: 11px;
+    }
+
+    .contest-info {
+      padding: 20px;
+    }
+
+    .contest-date {
+      color: #b68be0;
+      font-size: 12px;
+      margin-bottom: 9px;
+    }
+
+    .contest-info h3 {
+      margin: 0 0 10px;
+      font-size: 19px;
+    }
+
+    .contest-description {
+      color: #aaa0bb;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .contest-category {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 5px 10px;
+      border-radius: 20px;
+      background: rgba(163,79,229,.13);
+      color: #c9a8f5;
+      font-size: 11px;
+    }
+
+    .contest-details {
+      margin-top: 17px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 13px;
+    }
+
+    .contest-details summary {
+      color: #d5b3fa;
+      font-size: 13px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .contest-details-content {
+      padding-top: 13px;
+      color: #b9aec8;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .contest-details-content h4 {
+      color: #e0c9fa;
+      margin: 13px 0 5px;
+    }
+
+    .contest-details-content ul {
+      padding-left: 20px;
+    }
+
+    .contest-empty {
+      grid-column: 1 / -1;
+      padding: 45px 20px;
+      text-align: center;
+      color: #aaa0bb;
+      border: 1px dashed rgba(255,255,255,.15);
+      border-radius: 18px;
+    }
+
+    .contest-empty strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #d7b2ff;
+      font-size: 17px;
+    }
+
+    .contest-count {
+      margin: 0 0 20px;
+      text-align: center;
+      color: #92859f;
+      font-size: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .contest-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contest-tools {
+        flex-direction: column;
+      }
+
+      .contest-tools select,
+      .contest-tools input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="Аватарский KlipTok — главная">
+    <img src="images/tokcoin.png" alt="" class="brand-coin">
+    <span>Аватарский KlipTok</span>
+  </a>
+
+  <nav class="main-nav" aria-label="Главное меню">
+    <a href="index.html">Главная</a>
+    <a href="earn.html">ТокКоины</a>
+    <a href="shop.html">Магазин</a>
+    <a href="winners.html">Архив победителей</a>
+    <a href="contests.html" aria-current="page">Архив конкурсов</a>
+    <a href="promo.html">Промокоды</a>
+    <a href="faq.html">FAQ</a>
+  </nav>
+</header>
+
+<main>
+  <section class="section section-alt">
+
+    <div class="contest-intro">
+      <span class="eyebrow">ИСТОРИЯ АВАТАРСКОГО KLIPTOK</span>
+      <h2>Архив конкурсов</h2>
+      <p>
+        Здесь собраны наши конкурсы и мероприятия:
+        задания, условия участия, призы и результаты.
+        Вспоминай самые яркие события проекта!
+      </p>
+    </div>
+
+    <div class="contest-tools">
+      <input
+        type="search"
+        id="contestSearch"
+        placeholder="Найти конкурс..."
+        aria-label="Поиск конкурсов">
+
+      <select id="contestYear" aria-label="Фильтр по году">
+        <option value="all">Все годы</option>
+      </select>
+
+      <select id="contestCategory" aria-label="Фильтр по категории">
+        <option value="all">Все категории</option>
+        <option value="creative">Творческие</option>
+        <option value="repost">Репостные</option>
+        <option value="game">Игровые</option>
+        <option value="team">Командные</option>
+        <option value="holiday">Праздничные</option>
+        <option value="other">Другие</option>
+      </select>
+    </div>
+
+    <p class="contest-count" id="contestCount"></p>
+
+    <div class="contest-grid" id="contestGrid">
+      <div class="contest-empty">
+        <strong>Архив готовится к открытию 💜</strong>
+        Скоро здесь появятся конкурсы и мероприятия
+        Аватарского KlipTok.
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-socials">
+    <a href="https://www.tiktok.com/@avataria.game"
+       target="_blank" rel="noopener noreferrer"
+       class="social-link" aria-label="TikTok">
+      <span class="social-letter">TT</span>
+    </a>
+
+    <a href="https://vk.ru/clips/avataryaclub"
+       target="_blank" rel="noopener noreferrer"
+       class="social-link" aria-label="ВКонтакте">
+      <span class="social-letter">VK</span>
+    </a>
+
+    <a href="https://tortuga.games/tgc?ysclid=mwnvs6chn5732222744"
+       target="_blank" rel="noopener noreferrer"
+       class="social-link" aria-label="TGC">
+      <span class="social-letter">TGC</span>
+    </a>
+  </div>
+
+  <img src="images/tokcoin.png" alt="" class="footer-coin">
+  <p>Будь в тренде!</p>
+  <span>Аватарский KlipTok</span>
+</footer>
+
+<script>
+  // Сюда будем добавлять конкурсы.
+  const contests = [];
+
+  const grid = document.getElementById("contestGrid");
+  const search = document.getElementById("contestSearch");
+  const yearFilter = document.getElementById("contestYear");
+  const categoryFilter = document.getElementById("contestCategory");
+  const count = document.getElementById("contestCount");
+
+  function prepareFilters() {
+    const years = [...new Set(contests.map(item => item.year))]
+      .sort((a, b) => b - a);
+
+    years.forEach(year => {
+      const option = document.createElement("option");
+      option.value = String(year);
+      option.textContent = year;
+      yearFilter.append(option);
+    });
+  }
+
+  function renderContests() {
+    const term = search.value.trim().toLocaleLowerCase("ru");
+
+    const filtered = contests.filter(item => {
+      const matchesSearch =
+        item.title.toLocaleLowerCase("ru").includes(term) ||
+        item.description.toLocaleLowerCase("ru").includes(term);
+
+      const matchesYear =
+        yearFilter.value === "all" ||
+        String(item.year) === yearFilter.value;
+
+      const matchesCategory =
+        categoryFilter.value === "all" ||
+        item.category === categoryFilter.value;
+
+      return matchesSearch && matchesYear && matchesCategory;
+    });
+
+    grid.replaceChildren();
+
+    count.textContent = `Найдено конкурсов: ${filtered.length}`;
+
+    if (!filtered.length) {
+      const empty = document.createElement("div");
+      empty.className = "contest-empty";
+      empty.innerHTML = `
+        <strong>Пока ничего не найдено</strong>
+        Попробуй изменить поисковый запрос или фильтры.
+      `;
+      grid.append(empty);
+      return;
+    }
+
+    filtered.forEach(item => {
+      const card = document.createElement("article");
+      card.className = "contest-card";
+
+      const cover = document.createElement("div");
+      cover.className = "contest-cover";
+
+      if (item.image) {
+        const img = document.createElement("img");
+        img.src = item.image;
+        img.alt = item.title;
+        cover.append(img);
+      } else {
+        const placeholder = document.createElement("span");
+        placeholder.className = "contest-cover-placeholder";
+        placeholder.textContent = "АВАТАРСКИЙ KLIPTOK";
+        cover.append(placeholder);
+      }
+
+      const status = document.createElement("span");
+      status.className = "contest-status";
+      status.textContent = item.status || "Завершён";
+      cover.append(status);
+
+      const info = document.createElement("div");
+      info.className = "contest-info";
+
+      const date = document.createElement("div");
+      date.className = "contest-date";
+      date.textContent = item.date;
+
+      const title = document.createElement("h3");
+      title.textContent = item.title;
+
+      const description = document.createElement("p");
+      description.className = "contest-description";
+      description.textContent = item.description;
+
+      const category = document.createElement("span");
+      category.className = "contest-category";
+      category.textContent = item.categoryName;
+
+      const details = document.createElement("details");
+      details.className = "contest-details";
+
+      const summary = document.createElement("summary");
+      summary.textContent = "Подробнее о конкурсе";
+
+      const content = document.createElement("div");
+      content.className = "contest-details-content";
+
+      const conditions = document.createElement("div");
+      conditions.innerHTML = item.conditions || "";
+
+      const prizes = document.createElement("div");
+      prizes.innerHTML = item.prizes || "";
+
+      const results = document.createElement("div");
+      results.innerHTML = item.results || "";
+
+      content.append(conditions, prizes, results);
+      details.append(summary, content);
+
+      info.append(date, title, description, category, details);
+      card.append(cover, info);
+      grid.append(card);
+    });
+  }
+
+  prepareFilters();
+  renderContests();
+
+  search.addEventListener("input", renderContests);
+  yearFilter.addEventListener("change", renderContests);
+  categoryFilter.addEventListener("change", renderContests);
+</script>
+
+</body>
+</html>
