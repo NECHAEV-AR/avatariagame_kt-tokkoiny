@@ -7,11 +7,30 @@
   <meta name="theme-color" content="#170b2d">
   <title>Колесо фортуны | ТокКоины</title>
   <link rel="stylesheet" href="style.css">
+
   <style>
     .wheel-page {
       width: min(100% - 30px, 900px);
       margin: 35px auto;
       text-align: center;
+    }
+
+    .back-home {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 11px 22px;
+      border: 1px solid #9366bd;
+      border-radius: 10px;
+      color: #f2c5ff;
+      text-decoration: none;
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .back-home:hover {
+      background: #492568;
+      border-color: #d78cff;
+      transform: translateY(-2px);
     }
 
     .wheel-frame {
@@ -39,9 +58,15 @@
     }
   </style>
 </head>
+
 <body>
 
   <main class="wheel-page">
+
+    <a href="index.html" class="back-home">
+      ← На главную
+    </a>
+
     <h1>Колесо фортуны</h1>
     <p>Испытай удачу и получи свой приз!</p>
 
@@ -52,6 +77,7 @@
         loading="lazy">
       </iframe>
     </div>
+
   </main>
 
 </body>
