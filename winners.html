@@ -11,153 +11,176 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* Статистика */
     .winner-stats {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin: 25px 0 30px;
+      gap: 12px;
+      margin: 22px 0 28px;
     }
 
     .winner-stat {
-      padding: 22px 18px;
+      padding: 17px 14px;
       text-align: center;
-      border: 1px solid rgba(180, 130, 255, .22);
-      border-radius: 14px;
+      border: 1px solid rgba(180, 130, 255, .2);
+      border-radius: 13px;
       background: rgba(255, 255, 255, .035);
     }
 
     .winner-stat-label {
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 7px;
       color: var(--muted, #b9abc9);
-      font-size: 13px;
+      font-size: 12px;
     }
 
     .winner-stat-value {
       display: block;
       color: #d4b5ff;
-      font-size: clamp(25px, 4vw, 34px);
+      font-size: clamp(24px, 4vw, 32px);
       font-weight: 800;
       line-height: 1.2;
     }
 
     .winner-stat-note {
       display: block;
-      margin-top: 8px;
+      margin-top: 5px;
       color: var(--muted, #b9abc9);
-      font-size: 11px;
+      font-size: 10px;
     }
 
-    /* Архив */
-    .archive-year {
+    .winner-section {
+      margin-top: 30px;
+    }
+
+    .winner-section-title {
       margin-bottom: 14px;
-      border: 1px solid rgba(180, 130, 255, .2);
-      border-radius: 14px;
+      font-size: 21px;
+    }
+
+    /* Общий стиль раскрывающихся уровней */
+
+    .archive-year,
+    .archive-month,
+    .clip-entry,
+    .game-entry {
       overflow: hidden;
+      border: 1px solid rgba(180, 130, 255, .18);
+      border-radius: 11px;
       background: rgba(255, 255, 255, .025);
     }
 
-    .archive-year > summary {
-      padding: 17px 20px;
-      cursor: pointer;
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .archive-year > summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .archive-year > summary::after {
-      content: "+";
-      font-size: 22px;
-      color: #c49aff;
-    }
-
-    .archive-year[open] > summary::after {
-      content: "−";
-    }
-
-    .archive-year-content {
-      padding: 0 14px 14px;
-    }
-
-    .archive-month-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .archive-month {
-      min-width: 0;
-      border: 1px solid rgba(180, 130, 255, .16);
-      border-radius: 10px;
-      background: rgba(255, 255, 255, .025);
-      overflow: hidden;
-    }
-
-    .archive-month > summary {
-      padding: 12px 10px;
-      cursor: pointer;
-      list-style: none;
-      text-align: center;
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .archive-month > summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .archive-month[open] {
-      grid-column: 1 / -1;
-    }
-
-    .archive-month[open] > summary {
-      border-bottom: 1px solid rgba(180, 130, 255, .16);
-      color: #d4b5ff;
-    }
-
-    .archive-month .clip-list {
-      padding: 10px;
-    }
-
-    .archive-month .clip-entry {
+    .archive-year {
       margin-bottom: 9px;
     }
 
-    .archive-month .clip-entry:last-child {
-      margin-bottom: 0;
+    .archive-year > summary,
+    .archive-month > summary,
+    .clip-entry > summary,
+    .game-entry > summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      list-style: none;
     }
 
-    .archive-month .clip-entry > summary {
-      cursor: pointer;
+    .archive-year > summary::-webkit-details-marker,
+    .archive-month > summary::-webkit-details-marker,
+    .clip-entry > summary::-webkit-details-marker,
+    .game-entry > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .archive-year > summary::after,
+    .archive-month > summary::after,
+    .clip-entry > summary::after,
+    .game-entry > summary::after {
+      content: "+";
+      flex-shrink: 0;
+      color: #c49aff;
+      font-size: 19px;
+      line-height: 1;
+    }
+
+    .archive-year[open] > summary::after,
+    .archive-month[open] > summary::after,
+    .clip-entry[open] > summary::after,
+    .game-entry[open] > summary::after {
+      content: "−";
+    }
+
+    .archive-year > summary {
+      padding: 14px 16px;
+      font-size: 16px;
+      font-weight: 750;
+    }
+
+    .archive-year-content {
+      padding: 0 10px 10px;
+    }
+
+    .archive-month-list {
+      display: grid;
+      gap: 7px;
+    }
+
+    .archive-month > summary {
+      padding: 11px 13px;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .archive-month[open] > summary {
+      color: #d4b5ff;
+      border-bottom: 1px solid rgba(180, 130, 255, .15);
+    }
+
+    .archive-month-content {
+      display: grid;
+      gap: 7px;
+      padding: 9px;
+    }
+
+    .clip-entry > summary,
+    .game-entry > summary {
+      padding: 10px 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .clip-entry[open],
+    .game-entry[open] {
+      border-color: rgba(180, 130, 255, .3);
+    }
+
+    .clip-content,
+    .game-content {
+      padding: 0 11px 11px;
     }
 
     .winner-columns {
       display: grid;
-      gap: 10px;
-      padding-top: 10px;
+      gap: 7px;
+      padding-top: 8px;
     }
 
     .winner-columns details {
-      padding: 10px;
-      border-radius: 9px;
+      padding: 9px 11px;
+      border-radius: 8px;
       background: rgba(255, 255, 255, .035);
     }
 
     .winner-columns summary {
       cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
     }
 
     .winner-list {
-      padding-left: 22px;
-      margin-bottom: 0;
+      padding-left: 21px;
+      margin: 9px 0 0;
+      font-size: 12px;
     }
 
     .winner-list li {
@@ -165,30 +188,58 @@
       overflow-wrap: anywhere;
     }
 
+    .winner-coins {
+      color: #d4b5ff;
+      font-weight: 700;
+    }
+
+    .archive-empty {
+      padding: 10px 12px;
+      color: var(--muted, #b9abc9);
+      font-size: 12px;
+    }
+
+    .archive-error {
+      padding: 13px;
+      color: #e5b9ff;
+      font-size: 13px;
+      border: 1px solid rgba(180, 130, 255, .2);
+      border-radius: 10px;
+    }
+
+    .archive-retry {
+      margin-top: 10px;
+      padding: 9px 15px;
+      border: 1px solid #9366bd;
+      border-radius: 8px;
+      background: #492568;
+      color: white;
+      cursor: pointer;
+    }
+
     @media (max-width: 600px) {
-      .archive-month-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .winner-stats {
         gap: 8px;
       }
 
-      .archive-year > summary {
-        padding: 15px;
-      }
-
-      .winner-stats {
-        gap: 9px;
-      }
-
       .winner-stat {
-        padding: 17px 9px;
+        padding: 14px 8px;
       }
 
       .winner-stat-label {
-        font-size: 11px;
+        font-size: 10px;
       }
 
       .winner-stat-note {
-        font-size: 10px;
+        font-size: 9px;
+      }
+
+      .archive-year > summary {
+        padding: 13px;
+      }
+
+      .archive-year-content {
+        padding: 0 7px 7px;
       }
     }
   </style>
@@ -203,8 +254,10 @@
   </a>
 
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNavigation">
-    <span class="menu-toggle-lines" aria-hidden="true"></span><span class="menu-toggle-label">Меню</span>
+    <span class="menu-toggle-lines" aria-hidden="true"></span>
+    <span class="menu-toggle-label">Меню</span>
   </button>
+
   <nav class="main-nav" id="siteNavigation" aria-label="Главное меню">
     <a href="index.html">Главная</a>
     <a href="earn.html">ТокКоины</a>
@@ -221,15 +274,14 @@
   <div class="section-heading">
     <span class="eyebrow">ТВОЯ УДАЧА РЯДОМ</span>
     <h2>Архив победителей</h2>
-    <p>Ищи год, месяц и дату выхода клипа, чтобы проверить списки победителей.</p>
+    <p>История победителей клипов и игровых конкурсов проекта.</p>
   </div>
 
-  <!-- Статистика -->
   <div class="winner-stats">
     <div class="winner-stat">
       <span class="winner-stat-label">Всего выдано ТокКоинов</span>
       <strong class="winner-stat-value" id="totalTokCoins">0</strong>
-      <span class="winner-stat-note">За всё время</span>
+      <span class="winner-stat-note">Клипы и игры</span>
     </div>
 
     <div class="winner-stat">
@@ -239,17 +291,31 @@
     </div>
   </div>
 
-  <div class="archive-wrap" id="archiveWrap">
-    <p class="muted">Загружаем архив победителей...</p>
+  <div class="winner-section">
+    <h3 class="winner-section-title">🎬 Победители клипов</h3>
+    <div class="archive-wrap" id="clipsArchive">
+      <p class="muted">Загружаем архив клипов...</p>
+    </div>
+  </div>
+
+  <div class="winner-section">
+    <h3 class="winner-section-title">🎮 Победители игр</h3>
+    <div class="archive-wrap" id="gamesArchive">
+      <p class="muted">Загружаем архив игр...</p>
+    </div>
   </div>
 
 </section>
 </main>
 
-</footer>
-
 <script>
-const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRdR5W64XF83bj3Aic7qbLRAdrNKaP1gvLb3LH-d4-aW0HXNgu2AsDQagOKABYvCrjJwbW7krVjMftj/pub?gid=0&single=true&output=csv";
+/* Ссылки на опубликованные Google Таблицы */
+
+const CLIPS_SHEET_URL =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRdR5W64XF83bj3Aic7qbLRAdrNKaP1gvLb3LH-d4-aW0HXNgu2AsDQagOKABYvCrjJwbW7krVjMftj/pub?gid=0&single=true&output=csv";
+
+const GAMES_SHEET_URL =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vT-ND82XWVkCH3PLGJ1GKDHYJOFEpiiYB-Z5xXTAiZdSYi1TetSb37GwVcoIfyQ_427lXRXHMCP60UO/pub?gid=0&single=true&output=csv";
 
 const MONTH_NAMES = [
   "Январь", "Февраль", "Март", "Апрель",
@@ -258,7 +324,10 @@ const MONTH_NAMES = [
 ];
 
 const FIRST_YEAR = 2024;
-const FIRST_MONTH = 4; // Май, нумерация начинается с нуля
+const FIRST_MONTH = 4;
+
+
+/* Вспомогательные функции */
 
 function parseCSV(text) {
   const rows = [];
@@ -311,6 +380,7 @@ function normalizeHeader(value) {
 
 function parseDate(value) {
   const text = String(value || "").trim();
+
   let match = text.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);
 
   if (match) {
@@ -350,13 +420,6 @@ function formatDate(date) {
     date.year;
 }
 
-function normalizeCategory(value) {
-  const category = String(value || "").trim().toLowerCase().replace(/ё/g, "е");
-  if (/^лайк(и|ов)?$/.test(category)) return "like";
-  if (/^коммент(арий|арии|а|ов)?$/.test(category)) return "comment";
-  return null;
-}
-
 function parseTokCoins(value) {
   const cleaned = String(value || "")
     .replace(/\s/g, "")
@@ -372,19 +435,6 @@ function formatNumber(value) {
   return new Intl.NumberFormat("ru-RU").format(value);
 }
 
-function updateStatistics(records, hasTokCoinsColumn) {
-  const totalTokCoins = records.reduce((sum, record) => sum + record.tokCoins, 0);
-  document.getElementById("totalTokCoins").textContent = hasTokCoinsColumn
-    ? formatNumber(totalTokCoins)
-    : "—";
-  document.getElementById("totalAwards").textContent = formatNumber(records.length);
-
-  const coinNote = document.querySelector("#totalTokCoins")?.parentElement?.querySelector(".winner-stat-note");
-  if (coinNote && !hasTokCoinsColumn) {
-    coinNote.textContent = "В таблице нет столбца с количеством ТокКоинов";
-  }
-}
-
 function createElement(tag, className, text) {
   const element = document.createElement(tag);
 
@@ -393,6 +443,166 @@ function createElement(tag, className, text) {
 
   return element;
 }
+
+function isValidArchiveDate(date) {
+  if (!date) return false;
+  if (date.year < FIRST_YEAR) return false;
+  if (date.year === FIRST_YEAR && date.month < FIRST_MONTH) return false;
+
+  const today = new Date();
+  const recordDate = new Date(date.year, date.month, date.day);
+
+  today.setHours(23, 59, 59, 999);
+
+  return recordDate <= today;
+}
+
+
+/* Загрузка таблиц */
+
+async function fetchSheet(url) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 15000);
+
+  try {
+    const response = await fetch(url, {
+      cache: "no-store",
+      signal: controller.signal
+    });
+
+    if (!response.ok) {
+      throw new Error("Не удалось загрузить таблицу.");
+    }
+
+    const text = await response.text();
+    const rows = parseCSV(text);
+
+    if (!rows.length) {
+      throw new Error("Таблица пуста.");
+    }
+
+    return rows;
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
+
+/* Обработка таблицы клипов */
+
+function parseClips(rows) {
+  const headers = rows[0].map(normalizeHeader);
+
+  const dateIndex = headers.indexOf("дата клипа");
+  const categoryIndex = headers.indexOf("категория");
+  const winnerIndex = headers.indexOf("победитель");
+
+  const coinsIndex = headers.findIndex(header =>
+    header === "токкоины" ||
+    header === "количество токкоинов"
+  );
+
+  if (dateIndex === -1 || categoryIndex === -1 || winnerIndex === -1) {
+    throw new Error("Проверь названия столбцов в таблице клипов.");
+  }
+
+  const records = [];
+
+  rows.slice(1).forEach(row => {
+    const date = parseDate(row[dateIndex]);
+    const category = String(row[categoryIndex] || "")
+      .trim()
+      .toLowerCase()
+      .replace(/ё/g, "е");
+
+    const winner = String(row[winnerIndex] || "").trim();
+
+    if (!isValidArchiveDate(date) || !winner) return;
+
+    let normalizedCategory = null;
+
+    if (/^лайк(и|ов)?$/.test(category)) {
+      normalizedCategory = "like";
+    }
+
+    if (/^коммент(арий|арии|а|ов)?$/.test(category)) {
+      normalizedCategory = "comment";
+    }
+
+    if (!normalizedCategory) return;
+
+    records.push({
+      date,
+      category: normalizedCategory,
+      winner,
+      tokCoins: coinsIndex !== -1
+        ? parseTokCoins(row[coinsIndex])
+        : 0
+    });
+  });
+
+  return records;
+}
+
+
+/* Обработка таблицы игр */
+
+function parseGames(rows) {
+  const headers = rows[0].map(normalizeHeader);
+
+  const dateIndex = headers.indexOf("дата игры");
+  const gameIndex = headers.indexOf("название игры");
+  const winnerIndex = headers.indexOf("победитель");
+  const coinsIndex = headers.indexOf("токкоины");
+
+  if (
+    dateIndex === -1 ||
+    gameIndex === -1 ||
+    winnerIndex === -1 ||
+    coinsIndex === -1
+  ) {
+    throw new Error(
+      "Проверь названия столбцов в таблице игр: Дата игры, Название игры, Победитель, ТокКоины."
+    );
+  }
+
+  const records = [];
+
+  rows.slice(1).forEach(row => {
+    const date = parseDate(row[dateIndex]);
+    const game = String(row[gameIndex] || "").trim();
+    const winner = String(row[winnerIndex] || "").trim();
+
+    if (!isValidArchiveDate(date) || !game || !winner) return;
+
+    records.push({
+      date,
+      game,
+      winner,
+      tokCoins: parseTokCoins(row[coinsIndex])
+    });
+  });
+
+  return records;
+}
+
+
+/* Раскрытие только одного элемента на каждом уровне */
+
+function makeExclusive(container, selector) {
+  container.querySelectorAll(selector).forEach(item => {
+    item.addEventListener("toggle", () => {
+      if (!item.open) return;
+
+      container.querySelectorAll(selector).forEach(other => {
+        if (other !== item) other.open = false;
+      });
+    });
+  });
+}
+
+
+/* Создание списков победителей */
 
 function createWinnerCategory(title, winners, emptyText) {
   const details = createElement("details");
@@ -410,10 +620,11 @@ function createWinnerCategory(title, winners, emptyText) {
 
     content.appendChild(list);
   } else {
-    content.appendChild(createElement("p", "muted", emptyText));
+    content.appendChild(createElement("p", "archive-empty", emptyText));
   }
 
   details.appendChild(content);
+
   return details;
 }
 
@@ -424,6 +635,7 @@ function createClipEntry(clip) {
     createElement("summary", "", "Клип от " + formatDate(clip.date))
   );
 
+  const content = createElement("div", "clip-content");
   const columns = createElement("div", "winner-columns");
 
   columns.appendChild(
@@ -442,190 +654,275 @@ function createClipEntry(clip) {
     )
   );
 
-  entry.appendChild(columns);
+  content.appendChild(columns);
+  entry.appendChild(content);
+
   return entry;
 }
 
-function renderArchive(records) {
-  const archive = document.getElementById("archiveWrap");
-  archive.replaceChildren();
+function createGameEntry(game) {
+  const entry = createElement("details", "game-entry");
+
+  entry.appendChild(
+    createElement("summary", "", game.name)
+  );
+
+  const content = createElement("div", "game-content");
+  const list = createElement("ul", "winner-list");
+
+  game.winners.forEach(winner => {
+    const item = createElement("li");
+
+    item.appendChild(document.createTextNode(winner.name));
+
+    if (winner.tokCoins > 0) {
+      item.appendChild(document.createTextNode(" — "));
+
+      const coins = createElement(
+        "span",
+        "winner-coins",
+        formatNumber(winner.tokCoins) + " ТокКоинов"
+      );
+
+      item.appendChild(coins);
+    }
+
+    list.appendChild(item);
+  });
+
+  content.appendChild(list);
+  entry.appendChild(content);
+
+  return entry;
+}
+
+
+/* Общий архив по годам и месяцам */
+
+function renderArchive(container, records, type) {
+  container.replaceChildren();
+
+  if (!records.length) {
+    container.appendChild(
+      createElement("p", "archive-empty", "Пока нет опубликованных результатов.")
+    );
+    return;
+  }
 
   const now = new Date();
   const currentYear = now.getFullYear();
   const currentMonth = now.getMonth();
 
-  for (let year = currentYear; year >= FIRST_YEAR; year--) {
+  const years = [...new Set(records.map(record => record.date.year))]
+    .sort((a, b) => b - a);
+
+  years.forEach(year => {
     const yearDetails = createElement("details", "archive-year");
-
-    if (year === currentYear) {
-      yearDetails.open = true;
-    }
-
     const yearSummary = createElement("summary", "", year + " год");
+
     yearDetails.appendChild(yearSummary);
 
     const yearContent = createElement("div", "archive-year-content");
-    const monthGrid = createElement("div", "archive-month-grid");
+    const monthList = createElement("div", "archive-month-list");
 
-    const firstMonth = year === FIRST_YEAR ? FIRST_MONTH : 0;
-    const lastMonth = year === currentYear ? currentMonth : 11;
+    const months = [...new Set(
+      records
+        .filter(record => record.date.year === year)
+        .map(record => record.date.month)
+    )].sort((a, b) => b - a);
 
-    for (let month = lastMonth; month >= firstMonth; month--) {
+    months.forEach(month => {
       const monthDetails = createElement("details", "archive-month");
 
-      const monthSummary = createElement(
-        "summary",
-        "",
-        MONTH_NAMES[month]
+      monthDetails.appendChild(
+        createElement("summary", "", MONTH_NAMES[month])
       );
 
-      monthDetails.appendChild(monthSummary);
-
-      const clipList = createElement("div", "clip-list");
+      const monthContent = createElement("div", "archive-month-content");
 
       const monthRecords = records.filter(record =>
         record.date.year === year &&
         record.date.month === month
       );
 
-      const clips = new Map();
+      const dates = new Map();
 
       monthRecords.forEach(record => {
-        const dateKey = formatDate(record.date);
+        const key = formatDate(record.date);
 
-        if (!clips.has(dateKey)) {
-          clips.set(dateKey, {
+        if (!dates.has(key)) {
+          dates.set(key, {
             date: record.date,
-            like: [],
-            comment: []
+            records: []
           });
         }
 
-        if (record.category === "like") {
-          clips.get(dateKey).like.push(record.winner);
-        }
+        dates.get(key).records.push(record);
+      });
 
-        if (record.category === "comment") {
-          clips.get(dateKey).comment.push(record.winner);
+      const sortedDates = [...dates.values()].sort(
+        (a, b) => b.date.day - a.date.day
+      );
+
+      sortedDates.forEach(dateGroup => {
+        if (type === "clips") {
+          const clips = new Map();
+
+          dateGroup.records.forEach(record => {
+            if (!clips.has("clip")) {
+              clips.set("clip", {
+                date: record.date,
+                like: [],
+                comment: []
+              });
+            }
+
+            if (record.category === "like") {
+              clips.get("clip").like.push(record.winner);
+            }
+
+            if (record.category === "comment") {
+              clips.get("clip").comment.push(record.winner);
+            }
+          });
+
+          clips.forEach(clip => {
+            monthContent.appendChild(createClipEntry(clip));
+          });
+
+        } else {
+          const games = new Map();
+
+          dateGroup.records.forEach(record => {
+            if (!games.has(record.game)) {
+              games.set(record.game, {
+                name: record.game,
+                winners: []
+              });
+            }
+
+            games.get(record.game).winners.push({
+              name: record.winner,
+              tokCoins: record.tokCoins
+            });
+          });
+
+          games.forEach(game => {
+            monthContent.appendChild(createGameEntry(game));
+          });
         }
       });
 
-      if (clips.size === 0) {
-        clipList.appendChild(
-          createElement(
-            "p",
-            "muted",
-            "Пока нет опубликованных результатов."
-          )
-        );
-      } else {
-        const sortedClips = Array.from(clips.values()).sort(
-          (a, b) => b.date.day - a.date.day
-        );
+      monthDetails.appendChild(monthContent);
+      monthList.appendChild(monthDetails);
 
-        sortedClips.forEach(clip => {
-          clipList.appendChild(createClipEntry(clip));
-        });
-      }
-
-      monthDetails.appendChild(clipList);
-      monthGrid.appendChild(monthDetails);
-    }
-
-    yearContent.appendChild(monthGrid);
-    yearDetails.appendChild(yearContent);
-    archive.appendChild(yearDetails);
-  }
-}
-
-async function loadWinners() {
-  const archive = document.getElementById("archiveWrap");
-
-  try {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 12000);
-    let response;
-    try {
-      response = await fetch(SHEET_URL, { cache: "no-store", signal: controller.signal });
-    } finally {
-      clearTimeout(timeoutId);
-    }
-
-    if (!response.ok) {
-      throw new Error("Не удалось загрузить таблицу.");
-    }
-
-    const csvText = await response.text();
-    const rows = parseCSV(csvText);
-
-    if (rows.length === 0) {
-      throw new Error("Таблица пуста.");
-    }
-
-    const headers = rows[0].map(normalizeHeader);
-
-    const dateIndex = headers.indexOf("дата клипа");
-    const categoryIndex = headers.indexOf("категория");
-    const winnerIndex = headers.indexOf("победитель");
-
-    // Поддерживаются оба варианта заголовка.
-    const tokCoinsIndex = headers.findIndex(header =>
-      header === "токкоины" ||
-      header === "количество токкоинов"
-    );
-
-    if (dateIndex === -1 || categoryIndex === -1 || winnerIndex === -1) {
-      throw new Error("Проверь названия первых трёх столбцов в Google Таблице.");
-    }
-
-    const records = [];
-    const today = new Date();
-    today.setHours(23, 59, 59, 999);
-
-    rows.slice(1).forEach(row => {
-      const date = parseDate(row[dateIndex]);
-      const category = normalizeCategory(row[categoryIndex]);
-      const winner = String(row[winnerIndex] || "").trim();
-
-      if (!date || !category || !winner) return;
-      if (date.year < FIRST_YEAR) return;
-      if (date.year === FIRST_YEAR && date.month < FIRST_MONTH) return;
-
-      const recordDate = new Date(date.year, date.month, date.day);
-
-      if (recordDate > today) return;
-
-      const tokCoins = tokCoinsIndex !== -1
-        ? parseTokCoins(row[tokCoinsIndex])
-        : 0;
-
-      records.push({
-        date,
-        category,
-        winner,
-        tokCoins
-      });
+      makeExclusive(monthList, ".archive-month");
+      makeExclusive(monthContent, type === "clips" ? ".clip-entry" : ".game-entry");
     });
 
-    updateStatistics(records, tokCoinsIndex !== -1);
-    renderArchive(records);
+    yearContent.appendChild(monthList);
+    yearDetails.appendChild(yearContent);
+    container.appendChild(yearDetails);
+
+    makeExclusive(yearContent, ".archive-month");
+  });
+
+  makeExclusive(container, ".archive-year");
+
+/* Статистика */
+
+function updateStatistics(clips, games) {
+  const allRecords = [...clips, ...games];
+
+  const totalCoins = allRecords.reduce(
+    (sum, record) => sum + record.tokCoins,
+    0
+  );
+
+  document.getElementById("totalTokCoins").textContent =
+    formatNumber(totalCoins);
+
+  document.getElementById("totalAwards").textContent =
+    formatNumber(allRecords.length);
+}
+
+
+/* Ошибки загрузки */
+
+function showArchiveError(container, error, retryFunction) {
+  container.replaceChildren();
+
+  const message = createElement(
+    "p",
+    "archive-error",
+    error.name === "AbortError"
+      ? "Таблица отвечает слишком долго. Попробуй загрузить архив ещё раз."
+      : "Не удалось загрузить данные. Проверь таблицу и подключение к интернету."
+  );
+
+  const retry = createElement("button", "archive-retry", "Повторить загрузку");
+  retry.type = "button";
+  retry.addEventListener("click", retryFunction);
+
+  container.appendChild(message);
+  container.appendChild(retry);
+}
+
+
+/* Загрузка обоих архивов */
+
+async function loadClips() {
+  const container = document.getElementById("clipsArchive");
+
+  try {
+    const rows = await fetchSheet(CLIPS_SHEET_URL);
+    const records = parseClips(rows);
+
+    renderArchive(container, records, "clips");
+    return records;
 
   } catch (error) {
-    console.error("Ошибка загрузки архива победителей:", error);
-
-    archive.replaceChildren(
-      createElement("p", "muted", error.name === "AbortError"
-        ? "Таблица отвечает слишком долго. Попробуй загрузить архив ещё раз."
-        : "Не удалось загрузить архив. Проверь подключение к интернету и попробуй обновить страницу.")
-    );
-    const retry = createElement("button", "archive-retry", "Повторить загрузку");
-    retry.type = "button";
-    retry.addEventListener("click", loadWinners);
-    archive.appendChild(retry);
+    console.error("Ошибка загрузки клипов:", error);
+    showArchiveError(container, error, loadAll);
+    return [];
   }
 }
 
-loadWinners();
+async function loadGames() {
+  const container = document.getElementById("gamesArchive");
+
+  try {
+    const rows = await fetchSheet(GAMES_SHEET_URL);
+    const records = parseGames(rows);
+
+    renderArchive(container, records, "games");
+    return records;
+
+  } catch (error) {
+    console.error("Ошибка загрузки игр:", error);
+    showArchiveError(container, error, loadAll);
+    return [];
+  }
+}
+
+async function loadAll() {
+  document.getElementById("clipsArchive").replaceChildren(
+    createElement("p", "muted", "Загружаем архив клипов...")
+  );
+
+  document.getElementById("gamesArchive").replaceChildren(
+    createElement("p", "muted", "Загружаем архив игр...")
+  );
+
+  const [clips, games] = await Promise.all([
+    loadClips(),
+    loadGames()
+  ]);
+
+  updateStatistics(clips, games);
+}
+
+loadAll();
 </script>
 
 <script src="script.js" defer></script>
