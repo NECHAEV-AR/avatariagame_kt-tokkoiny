@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#170b2d">
+  <title>Колесо фортуны | ТокКоины</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .wheel-page {
+      width: min(100% - 30px, 900px);
+      margin: 35px auto;
+      text-align: center;
+    }
+
+    .wheel-frame {
+      width: 100%;
+      min-height: 720px;
+      border: 1px solid #7043a0;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #170b2d;
+    }
+
+    .wheel-frame iframe {
+      display: block;
+      width: 100%;
+      height: 720px;
+      border: 0;
+    }
+
+    @media (max-width: 600px) {
+      .wheel-frame,
+      .wheel-frame iframe {
+        min-height: 780px;
+        height: 780px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="wheel-page">
+    <h1>Колесо фортуны</h1>
+    <p>Испытай удачу и получи свой приз!</p>
+
+    <div class="wheel-frame">
+      <iframe
+        src="https://script.google.com/macros/s/AKfycbyDz_Gq1Zz_5ZTL1SllLeJV0CNLbZ1BalijphLYxo42WWk6vd04W6at1Bi0s0tOOpaJ/exec"
+        title="Колесо фортуны"
+        loading="lazy">
+      </iframe>
+    </div>
+  </main>
+
+</body>
+</html>
