@@ -925,3 +925,19 @@ a {
   color: #81768f;
   font-size: 10px;
 }
+.back-home {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  border: 1px solid #9366bd;
+  border-radius: 10px;
+  color: #f2c5ff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: .2s;
+}
+
+.back-home:hover {
+  background: #492568;
+  border-color: #d78cff;
+}
