@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -7,6 +8,67 @@
   <meta name="description" content="ТокКоины — накопительная система проекта Аватария KlipTok.">
   <title>Главная | ТокКоины</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .fortune-section {
+      padding: 35px 20px;
+    }
+
+    .fortune-banner {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      text-align: center;
+      border: 1px solid #a653d0;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #30134c, #55216f);
+      box-shadow: 0 0 25px #a653d033;
+    }
+
+    .fortune-icon {
+      font-size: 42px;
+      margin-bottom: 8px;
+    }
+
+    .fortune-title {
+      color: #f3c5ff;
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .fortune-description {
+      color: #e1cce9;
+      margin: 0 0 22px;
+      line-height: 1.5;
+    }
+
+    .fortune-button {
+      display: inline-block;
+      padding: 14px 30px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #bd55df, #f078bd);
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .fortune-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px #e58bff88;
+    }
+
+    @media (max-width: 600px) {
+      .fortune-section {
+        padding: 25px 15px;
+      }
+
+      .fortune-title {
+        font-size: 22px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -44,7 +106,26 @@
       </p>
 
       <a class="primary-btn" href="earn.html">
-        Узнать больше</span>
+        Узнать больше
+      </a>
+    </div>
+  </section>
+
+  <!-- Колесо фортуны -->
+  <section class="fortune-section">
+    <div class="fortune-banner">
+      <div class="fortune-icon">🎡</div>
+
+      <div class="fortune-title">
+        Колесо фортуны
+      </div>
+
+      <p class="fortune-description">
+        Испытай удачу! Крути колесо и получи свой приз.
+      </p>
+
+      <a href="wheel.html" class="fortune-button">
+        КРУТИТЬ КОЛЕСО
       </a>
     </div>
   </section>
